@@ -52,9 +52,10 @@ The application uses a comprehensive design system with:
 ## Data Flow
 
 1. **Contact Form Submission**: 
-   - Client-side form validation using React Hook Form
-   - Data submission via TanStack Query mutation
-   - Server-side validation using Zod schemas
+   - Dual email delivery system: EmailJS primary, server fallback
+   - Client-side form validation with luxury service options
+   - EmailJS integration for direct email delivery (requires setup)
+   - Server-side validation using Zod schemas as fallback
    - Storage in memory (designed for future database integration)
    - Success/error feedback via toast notifications
 
@@ -125,3 +126,4 @@ The application is designed to be easily deployable to various platforms with mi
 ✓ **Trust-Building Elements**: Integrated regulatory credentials, performance metrics, and compliance badges
 ✓ **Service Tiers**: Detailed breakdown of Private Wealth Mastery, Elite Investment Counsel, and Corporate Excellence
 ✓ **Navigation Enhancement**: Updated navigation to support multi-page routing with active state indicators
+✓ **EmailJS Integration**: Added EmailJS template for direct email delivery with comprehensive setup documentation
