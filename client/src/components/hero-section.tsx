@@ -5,14 +5,22 @@ export default function HeroSection() {
   const scrollToServices = () => {
     const element = document.getElementById("services");
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const targetPosition = element.offsetTop - 80;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
     }
   };
 
   const scrollToContact = () => {
     const element = document.getElementById("contact");
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const targetPosition = element.offsetTop - 80;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth",
+      });
     }
   };
 

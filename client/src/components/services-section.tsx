@@ -1,4 +1,5 @@
 import { TrendingUp, Building, Gem, BarChart3, Shield, Smartphone } from "lucide-react";
+import { ScrollReveal } from "@/hooks/use-scroll-reveal";
 
 export default function ServicesSection() {
   const services = [
@@ -43,41 +44,43 @@ export default function ServicesSection() {
   return (
     <section id="services" className="py-20 bg-white">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <ScrollReveal className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-medium text-navy mb-6 luxury-serif tracking-wide">Our Premium Services</h2>
           <p className="text-xl text-steel max-w-3xl mx-auto luxury-sans font-light">
             Comprehensive financial brokerage solutions tailored for the UAE market with exceptional service standards
           </p>
-        </div>
+        </ScrollReveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
-              <div 
+              <ScrollReveal 
                 key={service.title}
+                delay={index * 100}
                 className="hover-3d bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden"
-                data-testid={`service-card-${index}`}
               >
-                <img 
-                  src={service.image} 
-                  alt={service.title} 
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <div className="w-12 h-12 bg-accent-blue text-white rounded-lg flex items-center justify-center mb-4">
-                    <IconComponent size={24} />
+                <div data-testid={`service-card-${index}`}>
+                  <img 
+                    src={service.image} 
+                    alt={service.title} 
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-6">
+                    <div className="w-12 h-12 bg-accent-blue text-white rounded-lg flex items-center justify-center mb-4">
+                      <IconComponent size={24} />
+                    </div>
+                    <h3 className="text-xl font-medium text-navy mb-3 luxury-sans">{service.title}</h3>
+                    <p className="text-steel mb-4 luxury-sans font-light">{service.description}</p>
+                    <button 
+                      className="text-accent-blue font-medium hover:text-royal transition-colors luxury-sans"
+                      data-testid={`service-learn-more-${index}`}
+                    >
+                      Learn More →
+                    </button>
                   </div>
-                  <h3 className="text-xl font-medium text-navy mb-3 luxury-sans">{service.title}</h3>
-                  <p className="text-steel mb-4 luxury-sans font-light">{service.description}</p>
-                  <button 
-                    className="text-accent-blue font-medium hover:text-royal transition-colors luxury-sans"
-                    data-testid={`service-learn-more-${index}`}
-                  >
-                    Learn More →
-                  </button>
                 </div>
-              </div>
+              </ScrollReveal>
             );
           })}
         </div>

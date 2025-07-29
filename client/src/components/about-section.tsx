@@ -1,4 +1,5 @@
 import { Award, Users, TrendingUp } from "lucide-react";
+import { ScrollReveal } from "@/hooks/use-scroll-reveal";
 
 export default function AboutSection() {
   return (
@@ -16,7 +17,7 @@ export default function AboutSection() {
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
+          <ScrollReveal>
             <h2 className="text-4xl md:text-5xl font-medium mb-6 luxury-serif tracking-wide">Leading Financial Excellence in the UAE</h2>
             <p className="text-xl mb-8 opacity-90 luxury-sans font-light">
               With over a decade of experience in the UAE financial markets, PSM Financial Broker has established itself as a trusted partner for investors seeking premium financial services and exceptional returns.
@@ -53,7 +54,7 @@ export default function AboutSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
           
           <div className="relative">
             <img 
