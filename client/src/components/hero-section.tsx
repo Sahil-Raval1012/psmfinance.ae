@@ -38,11 +38,11 @@ export default function HeroSection() {
       
       <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-6">
         <h1 className="text-5xl md:text-7xl font-medium mb-6 animate-fade-in-up luxury-serif tracking-wide">
-          PREMIUM FINANCIAL
-          <span className="block text-accent-blue">BROKERAGE</span>
+          LUXURY FINANCIAL
+          <span className="block text-accent-blue">EXCELLENCE</span>
         </h1>
         <p className="text-xl md:text-2xl mb-8 opacity-90 animate-fade-in-up luxury-sans font-light" style={{ animationDelay: '0.3s' }}>
-          Excellence in financial services across the UAE market with unparalleled expertise and trust
+          Where prestige meets performance - trusted by the UAE's most discerning investors since 2010
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
           <Button 
@@ -50,7 +50,7 @@ export default function HeroSection() {
             className="bg-accent-blue hover:bg-royal text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-2xl luxury-sans"
             data-testid="explore-services-button"
           >
-            Explore Services
+            Discover Elite Services
           </Button>
           <Button 
             variant="outline"
@@ -58,7 +58,7 @@ export default function HeroSection() {
             className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-4 rounded-lg font-medium transition-all duration-300 luxury-sans"
             data-testid="contact-us-button"
           >
-            Contact Us
+            Begin Your Journey
           </Button>
         </div>
       </div>

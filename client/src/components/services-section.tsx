@@ -5,20 +5,20 @@ export default function ServicesSection() {
   const services = [
     {
       icon: TrendingUp,
-      title: "Investment Advisory",
-      description: "Strategic investment guidance with deep market insights and personalized portfolio management.",
+      title: "Elite Investment Counsel",
+      description: "Private investment strategies reserved for discerning clients, with personalized portfolio architecture and exclusive market access.",
       image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
       icon: Building,
-      title: "Corporate Finance",
-      description: "Comprehensive corporate financial solutions including mergers, acquisitions, and restructuring.",
+      title: "Corporate Excellence",
+      description: "Sophisticated corporate finance solutions including strategic mergers, exclusive acquisitions, and premium restructuring services.",
       image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
       icon: Gem,
-      title: "Wealth Management",
-      description: "Exclusive wealth preservation and growth strategies for high-net-worth individuals.",
+      title: "Private Wealth Mastery",
+      description: "Ultra-exclusive wealth preservation and multiplication strategies crafted for the UAE's most successful individuals and families.",
       image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
@@ -45,9 +45,9 @@ export default function ServicesSection() {
     <section id="services" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <ScrollReveal className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-medium text-navy mb-6 luxury-serif tracking-wide">Our Premium Services</h2>
+          <h2 className="text-4xl md:text-5xl font-medium text-navy mb-6 luxury-serif tracking-wide">Exclusive Financial Mastery</h2>
           <p className="text-xl text-steel max-w-3xl mx-auto luxury-sans font-light">
-            Comprehensive financial brokerage solutions tailored for the UAE market with exceptional service standards
+            Bespoke wealth solutions crafted for the UAE's elite - where every investment reflects your distinguished status
           </p>
         </ScrollReveal>
 

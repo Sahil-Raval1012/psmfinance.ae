@@ -101,9 +101,9 @@ export default function ContactSection() {
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-medium text-navy mb-6 luxury-serif tracking-wide">Get In Touch</h2>
+            <h2 className="text-4xl md:text-5xl font-medium text-navy mb-6 luxury-serif tracking-wide">Begin Your Legacy</h2>
             <p className="text-xl text-steel luxury-sans font-light">
-              Ready to elevate your financial future? Contact our expert team for personalized consultation
+              Experience the discretion and excellence that the UAE's most successful families trust. Schedule your private consultation today.
             </p>
           </div>
 
@@ -111,7 +111,7 @@ export default function ContactSection() {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-medium text-navy mb-6 luxury-serif">Contact Information</h3>
+                <h3 className="text-2xl font-medium text-navy mb-6 luxury-serif">Private Banking Center</h3>
                 
                 <div className="space-y-6">
                   {contactInfo.map((info, index) => {

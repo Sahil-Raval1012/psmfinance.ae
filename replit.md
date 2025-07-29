@@ -2,11 +2,12 @@
 
 ## Overview
 
-This is a modern full-stack web application for PSM Financial Broker, a premium financial services company in the UAE. The application features a responsive single-page website with contact form functionality, built using React, TypeScript, and Express.js with a clean, professional design focused on the financial services industry.
+This is a luxury full-stack web application for PSM Financial Broker, an ultra-premium financial services company in the UAE. The application emphasizes luxury positioning and trust-building through sophisticated design, regulatory credentials, and exclusive messaging. Built using React, TypeScript, and Express.js with premium scroll animations and luxury typography, the site targets the UAE's most discerning high-net-worth individuals and institutional clients.
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Main focus: Luxury statement and trust building - the website should emphasize prestige, exclusivity, and regulatory credibility to build trust with elite clientele.
 
 ## System Architecture
 

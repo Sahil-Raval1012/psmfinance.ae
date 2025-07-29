@@ -18,9 +18,9 @@ export default function AboutSection() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-5xl font-medium mb-6 luxury-serif tracking-wide">Leading Financial Excellence in the UAE</h2>
+            <h2 className="text-4xl md:text-5xl font-medium mb-6 luxury-serif tracking-wide">The Pinnacle of Financial Trust</h2>
             <p className="text-xl mb-8 opacity-90 luxury-sans font-light">
-              With over a decade of experience in the UAE financial markets, PSM Financial Broker has established itself as a trusted partner for investors seeking premium financial services and exceptional returns.
+              For over a decade, PSM Financial Broker has been the guardian of the UAE's most prestigious fortunes. Our unwavering commitment to discretion, excellence, and fiduciary responsibility has earned us the trust of the region's most influential families and corporations.
             </p>
             
             <div className="space-y-6">
@@ -29,8 +29,8 @@ export default function AboutSection() {
                   <Award size={24} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-medium mb-2 luxury-sans">UAE Market Expertise</h3>
-                  <p className="opacity-80 luxury-sans font-light">Deep understanding of local markets with comprehensive knowledge of UAE financial regulations and opportunities.</p>
+                  <h3 className="text-xl font-medium mb-2 luxury-sans">Exclusive Market Mastery</h3>
+                  <p className="opacity-80 luxury-sans font-light">Privileged access to elite investment opportunities with insider knowledge of UAE's most lucrative financial corridors and regulatory landscapes.</p>
                 </div>
               </div>
               
@@ -39,8 +39,8 @@ export default function AboutSection() {
                   <Users size={24} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-medium mb-2 luxury-sans">Trusted Partnership</h3>
-                  <p className="opacity-80 luxury-sans font-light">Building long-term relationships with clients through transparent communication and consistent results.</p>
+                  <h3 className="text-xl font-medium mb-2 luxury-sans">Legacy of Trust</h3>
+                  <p className="opacity-80 luxury-sans font-light">Multi-generational relationships built on absolute confidentiality, uncompromising integrity, and a heritage of safeguarding family wealth.</p>
                 </div>
               </div>
               
@@ -49,8 +49,8 @@ export default function AboutSection() {
                   <TrendingUp size={24} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-medium mb-2 luxury-sans">Proven Performance</h3>
-                  <p className="opacity-80 luxury-sans font-light">Consistent track record of delivering superior returns and strategic financial solutions to our valued clients.</p>
+                  <h3 className="text-xl font-medium mb-2 luxury-sans">Exceptional Performance</h3>
+                  <p className="opacity-80 luxury-sans font-light">An impeccable portfolio of achievements, consistently outperforming market benchmarks while preserving capital with institutional-grade risk management.</p>
                 </div>
               </div>
             </div>

@@ -28,7 +28,7 @@ export default function Footer() {
           <div>
             <h3 className="text-2xl font-medium mb-6 luxury-serif">PSM FINANCIAL BROKER</h3>
             <p className="text-gray-300 mb-6 luxury-sans font-light">
-              Premier financial brokerage services in the UAE, delivering excellence and trust in every client relationship.
+              The UAE's most trusted guardian of wealth - where luxury meets legacy, and discretion defines excellence.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => {
@@ -94,7 +94,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-gray-700 pt-8 text-center text-gray-300">
-          <p className="luxury-sans font-light">&copy; 2024 PSM Financial Broker. All rights reserved. Licensed and regulated by the UAE Central Bank.</p>
+          <p className="luxury-sans font-light">&copy; 2024 PSM Financial Broker. All rights reserved. Licensed by UAE Central Bank | DFSA Regulated | Member of Emirates Securities & Commodities Authority</p>
         </div>
       </div>
     </footer>

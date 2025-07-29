@@ -1,23 +1,23 @@
 export default function GallerySection() {
   const galleryItems = [
     {
-      title: "Executive Office",
+      title: "Private Wealth Sanctuary",
       image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
-      title: "Dubai Skyline View",
+      title: "Exclusive Dubai Overlook",
       image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
-      title: "Conference Room",
+      title: "Elite Advisory Chamber",
       image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
-      title: "Business District",
+      title: "Luxury Financial District",
       image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
-      title: "Reception Area",
+      title: "Platinum Client Atrium",
       image: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80",
       span: "md:col-span-2"
     }
@@ -27,9 +27,9 @@ export default function GallerySection() {
     <section id="gallery" className="py-20 bg-light-blue">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-medium text-navy mb-6 luxury-serif tracking-wide">Our Premium Spaces</h2>
+          <h2 className="text-4xl md:text-5xl font-medium text-navy mb-6 luxury-serif tracking-wide">Where Prestige Meets Privacy</h2>
           <p className="text-xl text-steel max-w-3xl mx-auto luxury-sans font-light">
-            Experience our world-class facilities and professional environment designed for excellence
+            Step into our exclusive sanctuaries of wealth - meticulously designed spaces where the UAE's most discerning clients conduct their most important financial decisions
           </p>
         </div>
 
