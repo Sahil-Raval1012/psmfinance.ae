@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "wouter";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,26 +30,28 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      // Premium smooth scrolling with custom easing
-      const targetPosition = element.offsetTop - 80;
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
-      });
-      setIsMobileMenuOpen(false);
+  const handleNavClick = (item: { id: string; path: string }) => {
+    if (item.path === "/" && location === "/") {
+      // If on home page, scroll to section
+      const element = document.getElementById(item.id);
+      if (element) {
+        const targetPosition = element.offsetTop - 80;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth",
+        });
+      }
     }
+    setIsMobileMenuOpen(false);
   };
 
+  const [location] = useLocation();
+
   const navItems = [
-    { id: "home", label: "Home" },
-    { id: "services", label: "Services" },
-    { id: "about", label: "About" },
-    { id: "owners", label: "Leadership" },
-    { id: "gallery", label: "Gallery" },
-    { id: "contact", label: "Contact" },
+    { id: "home", label: "Home", path: "/" },
+    { id: "services", label: "Services", path: "/services" },
+    { id: "about", label: "About", path: "/about" },
+    { id: "contact", label: "Contact", path: "/contact" },
   ];
 
   return (
@@ -62,25 +65,29 @@ export default function Navigation() {
         data-testid="main-navigation"
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
-          <div 
-            className="text-2xl font-medium text-white luxury-serif cursor-pointer"
-            onClick={() => scrollToSection("home")}
-            data-testid="logo"
-          >
-            PSM FINANCIAL BROKER
-          </div>
+          <Link href="/">
+            <div 
+              className="text-2xl font-medium text-white luxury-serif cursor-pointer"
+              data-testid="logo"
+            >
+              PSM FINANCIAL BROKER
+            </div>
+          </Link>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
             {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="text-white hover:text-accent-blue transition-colors font-normal luxury-sans"
-                data-testid={`nav-${item.id}`}
-              >
-                {item.label}
-              </button>
+              <Link key={item.id} href={item.path}>
+                <button
+                  onClick={() => handleNavClick(item)}
+                  className={`text-white hover:text-accent-blue transition-colors font-normal luxury-sans ${
+                    location === item.path ? 'text-accent-blue' : ''
+                  }`}
+                  data-testid={`nav-${item.id}`}
+                >
+                  {item.label}
+                </button>
+              </Link>
             ))}
           </div>
 
@@ -101,14 +108,17 @@ export default function Navigation() {
           <div className="md:hidden absolute top-full left-0 w-full bg-navy shadow-lg">
             <div className="flex flex-col space-y-4 p-6">
               {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-white hover:text-accent-blue transition-colors font-normal luxury-sans text-left"
-                  data-testid={`mobile-nav-${item.id}`}
-                >
-                  {item.label}
-                </button>
+                <Link key={item.id} href={item.path}>
+                  <button
+                    onClick={() => handleNavClick(item)}
+                    className={`text-white hover:text-accent-blue transition-colors font-normal luxury-sans text-left ${
+                      location === item.path ? 'text-accent-blue' : ''
+                    }`}
+                    data-testid={`mobile-nav-${item.id}`}
+                  >
+                    {item.label}
+                  </button>
+                </Link>
               ))}
             </div>
           </div>
