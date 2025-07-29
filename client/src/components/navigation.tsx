@@ -41,7 +41,7 @@ export default function Navigation() {
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
           <div 
-            className="text-2xl font-medium text-white optima-font cursor-pointer"
+            className="text-2xl font-medium text-white luxury-serif cursor-pointer"
             onClick={() => scrollToSection("home")}
             data-testid="logo"
           >
@@ -54,7 +54,7 @@ export default function Navigation() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-white hover:text-accent-blue transition-colors font-normal optima-font"
+                className="text-white hover:text-accent-blue transition-colors font-normal luxury-sans"
                 data-testid={`nav-${item.id}`}
               >
                 {item.label}
@@ -82,7 +82,7 @@ export default function Navigation() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-white hover:text-accent-blue transition-colors font-normal optima-font text-left"
+                  className="text-white hover:text-accent-blue transition-colors font-normal luxury-sans text-left"
                   data-testid={`mobile-nav-${item.id}`}
                 >
                   {item.label}

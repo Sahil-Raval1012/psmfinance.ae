@@ -17,8 +17,8 @@ export default function AboutSection() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-normal mb-6 optima-font">Leading Financial Excellence in the UAE</h2>
-            <p className="text-xl mb-8 opacity-90 optima-font">
+            <h2 className="text-4xl md:text-5xl font-medium mb-6 luxury-serif tracking-wide">Leading Financial Excellence in the UAE</h2>
+            <p className="text-xl mb-8 opacity-90 luxury-sans font-light">
               With over a decade of experience in the UAE financial markets, PSM Financial Broker has established itself as a trusted partner for investors seeking premium financial services and exceptional returns.
             </p>
             
@@ -28,8 +28,8 @@ export default function AboutSection() {
                   <Award size={24} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-normal mb-2 optima-font">UAE Market Expertise</h3>
-                  <p className="opacity-80 optima-font">Deep understanding of local markets with comprehensive knowledge of UAE financial regulations and opportunities.</p>
+                  <h3 className="text-xl font-medium mb-2 luxury-sans">UAE Market Expertise</h3>
+                  <p className="opacity-80 luxury-sans font-light">Deep understanding of local markets with comprehensive knowledge of UAE financial regulations and opportunities.</p>
                 </div>
               </div>
               
@@ -38,8 +38,8 @@ export default function AboutSection() {
                   <Users size={24} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-normal mb-2 optima-font">Trusted Partnership</h3>
-                  <p className="opacity-80 optima-font">Building long-term relationships with clients through transparent communication and consistent results.</p>
+                  <h3 className="text-xl font-medium mb-2 luxury-sans">Trusted Partnership</h3>
+                  <p className="opacity-80 luxury-sans font-light">Building long-term relationships with clients through transparent communication and consistent results.</p>
                 </div>
               </div>
               
@@ -48,8 +48,8 @@ export default function AboutSection() {
                   <TrendingUp size={24} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-normal mb-2 optima-font">Proven Performance</h3>
-                  <p className="opacity-80 optima-font">Consistent track record of delivering superior returns and strategic financial solutions to our valued clients.</p>
+                  <h3 className="text-xl font-medium mb-2 luxury-sans">Proven Performance</h3>
+                  <p className="opacity-80 luxury-sans font-light">Consistent track record of delivering superior returns and strategic financial solutions to our valued clients.</p>
                 </div>
               </div>
             </div>
@@ -65,13 +65,13 @@ export default function AboutSection() {
             
             {/* Stats overlay */}
             <div className="absolute -bottom-8 -left-8 bg-white text-navy p-6 rounded-2xl shadow-2xl">
-              <div className="text-3xl font-normal text-accent-blue optima-font">10+</div>
-              <div className="text-sm font-normal optima-font">Years Experience</div>
+              <div className="text-3xl font-medium text-accent-blue luxury-serif">10+</div>
+              <div className="text-sm font-medium luxury-sans">Years Experience</div>
             </div>
             
             <div className="absolute -top-8 -right-8 bg-accent-blue text-white p-6 rounded-2xl shadow-2xl">
-              <div className="text-3xl font-normal optima-font">500+</div>
-              <div className="text-sm font-normal optima-font">Satisfied Clients</div>
+              <div className="text-3xl font-medium luxury-serif">500+</div>
+              <div className="text-sm font-medium luxury-sans">Satisfied Clients</div>
             </div>
           </div>
         </div>

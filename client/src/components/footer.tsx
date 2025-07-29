@@ -26,8 +26,8 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
-            <h3 className="text-2xl font-normal mb-6 optima-font">PSM FINANCIAL BROKER</h3>
-            <p className="text-gray-300 mb-6 optima-font">
+            <h3 className="text-2xl font-medium mb-6 luxury-serif">PSM FINANCIAL BROKER</h3>
+            <p className="text-gray-300 mb-6 luxury-sans font-light">
               Premier financial brokerage services in the UAE, delivering excellence and trust in every client relationship.
             </p>
             <div className="flex space-x-4">
@@ -49,13 +49,13 @@ export default function Footer() {
           </div>
           
           <div>
-            <h4 className="text-lg font-normal mb-6 optima-font">Services</h4>
+            <h4 className="text-lg font-medium mb-6 luxury-sans">Services</h4>
             <ul className="space-y-3 text-gray-300">
               {serviceLinks.map((service, index) => (
                 <li key={service}>
                   <a 
                     href="#services" 
-                    className="hover:text-accent-blue transition-colors optima-font"
+                    className="hover:text-accent-blue transition-colors luxury-sans font-light"
                     data-testid={`footer-service-${index}`}
                   >
                     {service}
@@ -66,13 +66,13 @@ export default function Footer() {
           </div>
           
           <div>
-            <h4 className="text-lg font-normal mb-6 optima-font">Company</h4>
+            <h4 className="text-lg font-medium mb-6 luxury-sans">Company</h4>
             <ul className="space-y-3 text-gray-300">
               {companyLinks.map((link, index) => (
                 <li key={link}>
                   <a 
                     href="#" 
-                    className="hover:text-accent-blue transition-colors optima-font"
+                    className="hover:text-accent-blue transition-colors luxury-sans font-light"
                     data-testid={`footer-company-${index}`}
                   >
                     {link}
@@ -83,8 +83,8 @@ export default function Footer() {
           </div>
           
           <div>
-            <h4 className="text-lg font-normal mb-6 optima-font">Contact</h4>
-            <ul className="space-y-3 text-gray-300 optima-font">
+            <h4 className="text-lg font-medium mb-6 luxury-sans">Contact</h4>
+            <ul className="space-y-3 text-gray-300 luxury-sans font-light">
               <li>Emirates Towers, Level 45</li>
               <li>Dubai, UAE</li>
               <li>+971 4 123 4567</li>
@@ -94,7 +94,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-gray-700 pt-8 text-center text-gray-300">
-          <p className="optima-font">&copy; 2024 PSM Financial Broker. All rights reserved. Licensed and regulated by the UAE Central Bank.</p>
+          <p className="luxury-sans font-light">&copy; 2024 PSM Financial Broker. All rights reserved. Licensed and regulated by the UAE Central Bank.</p>
         </div>
       </div>
     </footer>

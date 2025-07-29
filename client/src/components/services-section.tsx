@@ -44,8 +44,8 @@ export default function ServicesSection() {
     <section id="services" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-normal text-navy mb-6 optima-font">Our Premium Services</h2>
-          <p className="text-xl text-steel max-w-3xl mx-auto optima-font">
+          <h2 className="text-4xl md:text-5xl font-medium text-navy mb-6 luxury-serif tracking-wide">Our Premium Services</h2>
+          <p className="text-xl text-steel max-w-3xl mx-auto luxury-sans font-light">
             Comprehensive financial brokerage solutions tailored for the UAE market with exceptional service standards
           </p>
         </div>
@@ -68,10 +68,10 @@ export default function ServicesSection() {
                   <div className="w-12 h-12 bg-accent-blue text-white rounded-lg flex items-center justify-center mb-4">
                     <IconComponent size={24} />
                   </div>
-                  <h3 className="text-xl font-normal text-navy mb-3 optima-font">{service.title}</h3>
-                  <p className="text-steel mb-4 optima-font">{service.description}</p>
+                  <h3 className="text-xl font-medium text-navy mb-3 luxury-sans">{service.title}</h3>
+                  <p className="text-steel mb-4 luxury-sans font-light">{service.description}</p>
                   <button 
-                    className="text-accent-blue font-normal hover:text-royal transition-colors optima-font"
+                    className="text-accent-blue font-medium hover:text-royal transition-colors luxury-sans"
                     data-testid={`service-learn-more-${index}`}
                   >
                     Learn More →
