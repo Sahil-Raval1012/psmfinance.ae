@@ -1,7 +1,11 @@
 import { ScrollReveal } from "@/hooks/use-scroll-reveal";
 import { Award, Users, TrendingUp, GraduationCap } from "lucide-react";
+import { useImmersiveEffects, useParticleSystem } from "@/hooks/use-immersive-effects";
 
 export default function OwnersSection() {
+  const containerRef = useImmersiveEffects();
+  useParticleSystem(containerRef);
+
   const owners = [
     {
       name: "Mohammed Al-Rashid",
@@ -40,7 +44,7 @@ export default function OwnersSection() {
   ];
 
   return (
-    <section id="owners" className="py-32 bg-gradient-to-br from-platinum via-light-blue to-white relative overflow-hidden">
+    <section ref={containerRef} id="owners" className="py-32 bg-gradient-to-br from-platinum via-light-blue to-white relative overflow-hidden parallax-container">
       {/* Premium background pattern with luxury texture */}
       <div className="absolute inset-0 opacity-3">
         <div className="absolute inset-0" style={{
@@ -69,7 +73,7 @@ export default function OwnersSection() {
         <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
           {owners.map((owner, index) => (
             <ScrollReveal key={owner.name} delay={index * 200}>
-              <div className="luxury-card bg-gradient-to-br from-white/90 via-white/95 to-platinum/50 rounded-3xl p-10 shadow-2xl border border-white/20 backdrop-blur-sm hover:scale-105 transition-all duration-700 hover:shadow-3xl">
+              <div className="luxury-card interactive-tilt bg-gradient-to-br from-white/90 via-white/95 to-platinum/50 rounded-3xl p-10 shadow-2xl border border-white/20 backdrop-blur-sm hover:scale-105 transition-all duration-700 hover:shadow-3xl depth-layer-2">
                 <div className="flex flex-col items-center text-center mb-8">
                   <div className="relative mb-6">
                     <img 

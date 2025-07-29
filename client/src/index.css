@@ -103,22 +103,61 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Smooth reveal animations on scroll */
+  /* Immersive scroll reveal system */
   .scroll-reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform: translateY(60px) rotateX(10deg);
+    transition: all 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform-origin: center bottom;
   }
 
   .scroll-reveal.revealed {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) rotateX(0deg);
   }
 
-  /* Premium parallax container */
+  .scroll-reveal-left {
+    opacity: 0;
+    transform: translateX(-80px) rotateY(15deg);
+    transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  .scroll-reveal-left.revealed {
+    opacity: 1;
+    transform: translateX(0) rotateY(0deg);
+  }
+
+  .scroll-reveal-right {
+    opacity: 0;
+    transform: translateX(80px) rotateY(-15deg);
+    transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  .scroll-reveal-right.revealed {
+    opacity: 1;
+    transform: translateX(0) rotateY(0deg);
+  }
+
+  /* Immersive parallax system */
   .parallax-container {
     transform-style: preserve-3d;
     perspective: 1000px;
+    overflow: hidden;
+  }
+
+  .parallax-bg {
+    will-change: transform;
+    transform: translateZ(-1px) scale(1.5);
+  }
+
+  .parallax-mid {
+    will-change: transform;
+    transform: translateZ(-0.5px) scale(1.2);
+  }
+
+  .parallax-front {
+    will-change: transform;
+    transform: translateZ(0);
   }
 
   /* Enhanced glass morphism with scroll blur */
@@ -274,6 +313,155 @@
   ::-moz-selection {
     background: rgba(207, 154, 255, 0.3);
     color: var(--navy);
+  }
+
+  /* Immersive mouse interactions */
+  .interactive-tilt {
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform-style: preserve-3d;
+  }
+
+  .interactive-tilt:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(20px);
+  }
+
+  /* Immersive depth layers */
+  .depth-layer-1 {
+    transform: translateZ(10px);
+    filter: blur(0px);
+  }
+
+  .depth-layer-2 {
+    transform: translateZ(20px);
+    filter: blur(0px);
+  }
+
+  .depth-layer-3 {
+    transform: translateZ(30px);
+    filter: blur(0px);
+  }
+
+  /* Cinematic entrance animations */
+  @keyframes cinematic-entrance {
+    0% {
+      opacity: 0;
+      transform: scale(1.1) translateY(40px);
+      filter: blur(10px);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.05) translateY(20px);
+      filter: blur(5px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      filter: blur(0px);
+    }
+  }
+
+  .animate-cinematic {
+    animation: cinematic-entrance 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  }
+
+  /* Immersive cursor trail effect */
+  .cursor-trail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.6) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease-out;
+  }
+
+  /* Immersive background particles */
+  @keyframes particle-float {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+      opacity: 0.3;
+    }
+    33% {
+      transform: translate(30px, -30px) rotate(120deg);
+      opacity: 0.6;
+    }
+    66% {
+      transform: translate(-20px, 20px) rotate(240deg);
+      opacity: 0.4;
+    }
+  }
+
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--gold-accent);
+    border-radius: 50%;
+    animation: particle-float 8s infinite ease-in-out;
+    opacity: 0.3;
+  }
+
+  .particle:nth-child(odd) {
+    animation-delay: -2s;
+    animation-duration: 6s;
+  }
+
+  .particle:nth-child(3n) {
+    animation-delay: -4s;
+    animation-duration: 10s;
+    background: var(--accent-blue);
+  }
+
+  /* Missing gradient utilities */
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+
+  .bg-size-200 {
+    background-size: 200% 100%;
+  }
+
+  .bg-pos-0 {
+    background-position: 0% 50%;
+  }
+
+  .bg-pos-100 {
+    background-position: 100% 50%;
+  }
+
+  /* Additional immersive enhancements */
+  .border-3 {
+    border-width: 3px;
+  }
+
+  .tracking-tighter {
+    letter-spacing: -0.05em;
+  }
+
+  .tracking-widest {
+    letter-spacing: 0.1em;
+  }
+
+  .leading-none {
+    line-height: 1;
+  }
+
+  /* Immersive text effects */
+  .text-shadow-luxury {
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Advanced blur effects */
+  .blur-3xl {
+    filter: blur(64px);
+  }
+
+  /* Enhanced shadow system */
+  .shadow-3xl {
+    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
   }
 }
 

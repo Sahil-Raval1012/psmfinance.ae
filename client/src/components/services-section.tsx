@@ -1,7 +1,11 @@
 import { TrendingUp, Building, Gem, BarChart3, Shield, Smartphone } from "lucide-react";
 import { ScrollReveal } from "@/hooks/use-scroll-reveal";
+import { useImmersiveEffects, useParticleSystem } from "@/hooks/use-immersive-effects";
 
 export default function ServicesSection() {
+  const containerRef = useImmersiveEffects();
+  useParticleSystem(containerRef);
+
   const services = [
     {
       icon: TrendingUp,
@@ -42,7 +46,7 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section id="services" className="py-32 bg-gradient-to-br from-white via-platinum to-light-blue relative overflow-hidden">
+    <section ref={containerRef} id="services" className="py-32 bg-gradient-to-br from-white via-platinum to-light-blue relative overflow-hidden parallax-container">
       {/* Luxury background elements */}
       <div className="absolute top-20 right-20 w-60 h-60 bg-gold-accent opacity-4 rounded-full animate-float blur-3xl" />
       <div className="absolute bottom-20 left-20 w-40 h-40 bg-royal opacity-6 rounded-full animate-float blur-2xl" style={{ animationDelay: '4s' }} />
@@ -68,7 +72,7 @@ export default function ServicesSection() {
               <ScrollReveal 
                 key={service.title}
                 delay={index * 150}
-                className="luxury-card bg-gradient-to-br from-white/95 via-white/90 to-platinum/60 rounded-3xl shadow-3xl border border-white/30 overflow-hidden backdrop-blur-sm hover:scale-105 transition-all duration-700"
+                className="luxury-card interactive-tilt bg-gradient-to-br from-white/95 via-white/90 to-platinum/60 rounded-3xl shadow-3xl border border-white/30 overflow-hidden backdrop-blur-sm hover:scale-105 transition-all duration-700 depth-layer-2"
               >
                 <div data-testid={`service-card-${index}`}>
                   <div className="relative overflow-hidden">
