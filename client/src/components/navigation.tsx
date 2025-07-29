@@ -70,14 +70,11 @@ export default function Navigation() {
           <Link href="/">
             <div 
               className={`text-2xl font-medium cursor-pointer luxury-serif-bold tracking-tight transition-all duration-300 ${
-                isScrolled ? "holographic-text text-morph" : "text-white text-morph"
+                isScrolled ? "text-gradient-luxury" : "text-white"
               }`}
               data-testid="logo"
             >
-              <div className="flex items-center gap-2">
-                <div className="diamond-shape w-8 h-8 transform rotate-0"></div>
-                PSM <span className={isScrolled ? "text-gradient-gold" : "text-gold-accent"}>FINANCIAL</span>
-              </div>
+              PSM <span className={isScrolled ? "text-gradient-gold" : "text-gold-accent"}>FINANCIAL</span>
             </div>
           </Link>
           
@@ -87,9 +84,7 @@ export default function Navigation() {
               <Link key={item.id} href={item.path}>
                 <button
                   onClick={() => handleNavClick(item)}
-                  className={`data-flow transition-all duration-300 font-medium luxury-sans-medium tracking-wide hover:scale-105 px-4 py-2 rounded-full ${
-                    location === item.path ? 'bg-gold-accent/20 backdrop-blur-sm' : ''
-                  } ${
+                  className={`transition-all duration-300 font-medium luxury-sans-medium tracking-wide hover:scale-105 ${
                     isScrolled 
                       ? `${location === item.path ? 'text-gold-accent' : 'text-charcoal hover:text-gold-accent'}`
                       : `${location === item.path ? 'text-gold-accent' : 'text-white hover:text-gold-accent'}`

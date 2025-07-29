@@ -45,13 +45,17 @@ export default function OwnersSection() {
 
   return (
     <section ref={containerRef} id="owners" className="py-32 bg-gradient-to-br from-platinum via-light-blue to-white relative overflow-hidden parallax-container">
-      {/* Unique crystalline background pattern */}
-      <div className="absolute inset-0 crystal-pattern opacity-40" />
+      {/* Premium background pattern with luxury texture */}
+      <div className="absolute inset-0 opacity-3">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4AF37' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='m0 60 60-60h-60v60zm60 0v-60h-60l60 60z'/%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundSize: '60px 60px'
+        }} />
+      </div>
       
-      {/* Unique geometric floating elements */}
-      <div className="absolute top-20 left-20 w-32 h-32 bg-gold-accent opacity-8 liquid-bg animate-float blur-xl" />
-      <div className="absolute bottom-20 right-20 diamond-shape opacity-10 animate-float" style={{ animationDelay: '3s' }} />
-      <div className="absolute top-1/3 right-1/4 hexagon-shape opacity-6 animate-float" style={{ animationDelay: '5s' }} />
+      {/* Floating luxury elements */}
+      <div className="absolute top-20 left-20 w-32 h-32 bg-gold-accent opacity-8 rounded-full animate-float blur-xl" />
+      <div className="absolute bottom-20 right-20 w-24 h-24 bg-accent-blue opacity-10 rounded-full animate-float blur-lg" style={{ animationDelay: '3s' }} />
 
       <div className="container mx-auto px-6 relative z-10">
         <ScrollReveal className="text-center mb-20">
@@ -70,7 +74,7 @@ export default function OwnersSection() {
         <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
           {owners.map((owner, index) => (
             <ScrollReveal key={owner.name} delay={index * 200}>
-              <div className="luxury-card interactive-tilt card-stack neural-pattern bg-gradient-to-br from-white/90 via-white/95 to-platinum/50 rounded-3xl p-10 shadow-2xl border border-white/20 backdrop-blur-sm hover:scale-105 transition-all duration-700 hover:shadow-3xl depth-layer-2">
+              <div className="luxury-card bg-gradient-to-br from-white/90 via-white/95 to-platinum/50 rounded-3xl p-10 shadow-2xl border border-white/20 backdrop-blur-sm hover:scale-105 transition-all duration-700 hover:shadow-3xl">
                 <div className="flex flex-col items-center text-center mb-8">
                   <div className="relative mb-6">
                     <img 
@@ -84,7 +88,7 @@ export default function OwnersSection() {
                     </div>
                   </div>
                   
-                  <h3 className="text-3xl font-semibold holographic-text text-morph mb-3 luxury-serif-bold tracking-tight" data-testid={`owner-name-${index}`}>
+                  <h3 className="text-3xl font-semibold text-gradient-luxury mb-3 luxury-serif-bold tracking-tight" data-testid={`owner-name-${index}`}>
                     {owner.name}
                   </h3>
                   <p className="text-gold-accent font-medium mb-6 luxury-sans-medium tracking-wide text-lg" data-testid={`owner-title-${index}`}>

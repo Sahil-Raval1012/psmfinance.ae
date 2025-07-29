@@ -47,11 +47,9 @@ export default function ServicesSection() {
 
   return (
     <section ref={containerRef} id="services" className="py-32 bg-gradient-to-br from-white via-platinum to-light-blue relative overflow-hidden parallax-container">
-      {/* Unique geometric background elements */}
-      <div className="absolute top-20 right-20 w-60 h-60 bg-gold-accent opacity-4 liquid-bg animate-float blur-3xl" />
-      <div className="absolute bottom-20 left-20 w-40 h-40 bg-royal opacity-6 liquid-bg animate-float blur-2xl" style={{ animationDelay: '4s' }} />
-      <div className="absolute top-1/3 left-1/4 diamond-shape opacity-6 animate-float" style={{ animationDelay: '2s' }} />
-      <div className="absolute bottom-1/3 right-1/4 hexagon-shape opacity-4 animate-float" style={{ animationDelay: '6s' }} />
+      {/* Luxury background elements */}
+      <div className="absolute top-20 right-20 w-60 h-60 bg-gold-accent opacity-4 rounded-full animate-float blur-3xl" />
+      <div className="absolute bottom-20 left-20 w-40 h-40 bg-royal opacity-6 rounded-full animate-float blur-2xl" style={{ animationDelay: '4s' }} />
       
       <div className="container mx-auto px-6 relative z-10">
         <ScrollReveal className="text-center mb-24">
@@ -59,8 +57,8 @@ export default function ServicesSection() {
             <Gem className="text-gold-accent" size={24} />
             <span className="luxury-sans-medium text-charcoal tracking-wide">EXCLUSIVE SERVICES</span>
           </div>
-          <h2 className="text-6xl md:text-8xl font-medium holographic-text text-morph mb-8 luxury-serif-bold tracking-tight">
-            Exclusive <span className="text-gradient-gold text-morph">Financial Mastery</span>
+          <h2 className="text-6xl md:text-8xl font-medium text-gradient-luxury mb-8 luxury-serif-bold tracking-tight">
+            Exclusive <span className="text-gradient-gold">Financial Mastery</span>
           </h2>
           <p className="text-2xl text-charcoal max-w-4xl mx-auto luxury-sans font-light leading-relaxed">
             Bespoke wealth solutions crafted for the UAE's elite — where every investment <em className="text-gold-accent luxury-serif">reflects your distinguished status</em>
@@ -74,7 +72,7 @@ export default function ServicesSection() {
               <ScrollReveal 
                 key={service.title}
                 delay={index * 150}
-                className="luxury-card interactive-tilt card-stack data-flow crystal-pattern bg-gradient-to-br from-white/95 via-white/90 to-platinum/60 rounded-3xl shadow-3xl border border-white/30 overflow-hidden backdrop-blur-sm hover:scale-105 transition-all duration-700 depth-layer-2"
+                className="luxury-card bg-gradient-to-br from-white/95 via-white/90 to-platinum/60 rounded-3xl shadow-3xl border border-white/30 overflow-hidden backdrop-blur-sm hover:scale-105 transition-all duration-700"
               >
                 <div data-testid={`service-card-${index}`}>
                   <div className="relative overflow-hidden">
@@ -89,7 +87,7 @@ export default function ServicesSection() {
                     </div>
                   </div>
                   <div className="p-8">
-                    <h3 className="text-2xl font-medium holographic-text text-morph mb-4 luxury-serif-bold tracking-tight">{service.title}</h3>
+                    <h3 className="text-2xl font-medium text-gradient-luxury mb-4 luxury-serif-bold tracking-tight">{service.title}</h3>
                     <p className="text-charcoal mb-6 luxury-sans leading-relaxed text-lg">{service.description}</p>
                     <button 
                       className="text-accent-blue font-medium hover:text-royal transition-colors luxury-sans"

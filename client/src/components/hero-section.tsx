@@ -52,14 +52,10 @@ export default function HeroSection() {
         }}
       />
       
-      {/* Unique Geometric Floating Elements */}
-      <div className="absolute top-20 right-20 w-40 h-40 bg-gold-accent opacity-10 liquid-bg animate-float blur-2xl depth-layer-1" />
-      <div className="absolute bottom-32 left-20 hexagon-shape opacity-15 animate-float depth-layer-2" style={{ animationDelay: '2s' }} />
-      <div className="absolute top-1/2 right-1/3 diamond-shape opacity-20 animate-float depth-layer-3" style={{ animationDelay: '4s' }} />
-      <div className="absolute top-40 left-1/4 w-20 h-20 bg-accent-blue opacity-12 liquid-bg animate-float blur-lg depth-layer-1" style={{ animationDelay: '6s' }} />
-      
-      {/* Unique Crystal Pattern Overlay */}
-      <div className="absolute inset-0 crystal-pattern opacity-30" />
+      {/* Luxury Floating Elements */}
+      <div className="absolute top-20 right-20 w-40 h-40 bg-gold-accent opacity-8 rounded-full animate-float blur-2xl" />
+      <div className="absolute bottom-32 left-20 w-32 h-32 bg-accent-blue opacity-12 rounded-full animate-float blur-xl" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-1/2 right-1/3 w-24 h-24 bg-platinum opacity-15 rounded-full animate-float blur-sm" style={{ animationDelay: '4s' }} />
 
       {/* Cinematic Vignette Effect */}
       <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-charcoal/40" />
@@ -73,61 +69,57 @@ export default function HeroSection() {
             <Shield size={24} className="text-accent-blue animate-pulse" style={{ animationDelay: '1s' }} />
           </div>
 
-          <h1 className="text-7xl md:text-9xl font-medium mb-12 luxury-serif-bold tracking-tighter leading-none">
-            <div className="holographic-text text-morph mb-4 transform hover:scale-105 transition-transform duration-700">
-              LUXURY FINANCIAL
-            </div>
-            <div className="text-gradient-gold text-morph transform hover:scale-105 transition-transform duration-700" style={{ animationDelay: '0.5s' }}>
-              EXCELLENCE
-            </div>
+          <h1 className="text-6xl md:text-8xl font-medium mb-8 animate-luxury-fade luxury-serif-bold tracking-tight">
+            <span className="text-gradient-luxury">LUXURY FINANCIAL</span>
+            <span className="block text-gradient-gold mt-2">EXCELLENCE</span>
           </h1>
         </div>
 
-        <div className="scroll-reveal-left animate-cinematic" style={{ animationDelay: '0.8s' }}>
-          <p className="text-3xl md:text-4xl mb-16 opacity-95 luxury-sans font-light leading-relaxed max-w-4xl mx-auto interactive-tilt">
-            The UAE's most exclusive guardian of wealth — where <em className="text-gold-accent luxury-serif animate-pulse">prestige meets precision</em>, and discretion defines excellence.
+        <ScrollReveal delay={300}>
+          <p className="text-2xl md:text-3xl mb-12 opacity-95 luxury-sans font-light leading-relaxed max-w-4xl mx-auto">
+            The UAE's most exclusive guardian of wealth — where <em className="text-gold-accent luxury-serif">prestige meets precision</em>, and discretion defines excellence.
           </p>
-        </div>
+        </ScrollReveal>
 
-        <div className="scroll-reveal-right animate-cinematic" style={{ animationDelay: '1.2s' }}>
-          {/* Immersive Luxury Stats */}
-          <div className="flex flex-wrap justify-center gap-10 mb-16">
-            <div className="text-center luxury-card interactive-tilt card-stack data-flow px-8 py-6 bg-white/10 backdrop-blur-2xl rounded-3xl border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-500">
-              <div className="text-4xl font-medium holographic-text luxury-serif mb-2">AED 2.5B+</div>
-              <div className="text-sm opacity-90 luxury-sans tracking-widest">ASSETS UNDER MANAGEMENT</div>
+        <ScrollReveal delay={600}>
+          {/* Luxury Stats */}
+          <div className="flex flex-wrap justify-center gap-8 mb-12">
+            <div className="text-center luxury-card px-6 py-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10">
+              <div className="text-3xl font-medium text-gold-accent luxury-serif mb-1">AED 2.5B+</div>
+              <div className="text-sm opacity-80 luxury-sans tracking-wide">ASSETS UNDER MANAGEMENT</div>
             </div>
-            <div className="text-center luxury-card interactive-tilt card-stack data-flow px-8 py-6 bg-white/10 backdrop-blur-2xl rounded-3xl border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-500">
-              <div className="text-4xl font-medium holographic-text luxury-serif mb-2" style={{ animationDelay: '1s' }}>500+</div>
-              <div className="text-sm opacity-90 luxury-sans tracking-widest">ELITE FAMILIES SERVED</div>
+            <div className="text-center luxury-card px-6 py-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10">
+              <div className="text-3xl font-medium text-accent-blue luxury-serif mb-1">500+</div>
+              <div className="text-sm opacity-80 luxury-sans tracking-wide">ELITE FAMILIES SERVED</div>
             </div>
-            <div className="text-center luxury-card interactive-tilt card-stack data-flow px-8 py-6 bg-white/10 backdrop-blur-2xl rounded-3xl border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-500">
-              <div className="text-4xl font-medium holographic-text luxury-serif mb-2" style={{ animationDelay: '2s' }}>98.7%</div>
-              <div className="text-sm opacity-90 luxury-sans tracking-widest">CLIENT RETENTION</div>
+            <div className="text-center luxury-card px-6 py-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10">
+              <div className="text-3xl font-medium text-gold-accent luxury-serif mb-1">98.7%</div>
+              <div className="text-sm opacity-80 luxury-sans tracking-wide">CLIENT RETENTION</div>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-8 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button 
               onClick={scrollToServices}
-              className="luxury-button interactive-tilt metallic-button text-charcoal px-12 py-6 rounded-3xl font-medium transition-all duration-700 hover:scale-110 hover:shadow-3xl luxury-sans-medium tracking-wide text-lg shadow-2xl border-2 border-gold-accent/50"
+              className="luxury-button bg-gradient-to-r from-accent-blue to-royal hover:from-royal hover:to-accent-blue text-white px-10 py-5 rounded-2xl font-medium transition-all duration-500 hover:scale-105 hover:shadow-2xl luxury-sans-medium tracking-wide"
               data-testid="explore-services-button"
               size="lg"
             >
-              <Crown className="mr-3 animate-pulse text-charcoal" size={24} />
+              <Crown className="mr-2" size={20} />
               Discover Elite Services
             </Button>
             <Button 
               variant="outline"
               onClick={scrollToContact}
-              className="luxury-button interactive-tilt data-flow border-3 border-gold-accent text-gold-accent hover:bg-gold-accent hover:text-charcoal px-12 py-6 rounded-3xl font-medium transition-all duration-700 hover:scale-110 luxury-sans-medium tracking-wide backdrop-blur-2xl bg-white/10 text-lg shadow-2xl neural-pattern"
+              className="luxury-button border-2 border-gold-accent text-gold-accent hover:bg-gold-accent hover:text-charcoal px-10 py-5 rounded-2xl font-medium transition-all duration-500 hover:scale-105 luxury-sans-medium tracking-wide backdrop-blur-sm bg-white/5"
               data-testid="contact-us-button"
               size="lg"
             >
-              <Star className="mr-3 animate-pulse" size={24} style={{ animationDelay: '1s' }} />
+              <Star className="mr-2" size={20} />
               Begin Your Legacy
             </Button>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
 
       {/* Floating 3D elements */}
