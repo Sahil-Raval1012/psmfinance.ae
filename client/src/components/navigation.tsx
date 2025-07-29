@@ -4,16 +4,30 @@ import { Button } from "@/components/ui/button";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
+      const currentScrollY = window.scrollY;
+      
+      // Set scrolled state for styling
+      setIsScrolled(currentScrollY > 100);
+      
+      // Hide navbar when scrolling down, show when scrolling up
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsHidden(true);
+      } else if (currentScrollY < lastScrollY) {
+        setIsHidden(false);
+      }
+      
+      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -36,6 +50,8 @@ export default function Navigation() {
       <nav 
         className={`fixed top-0 w-full z-50 transition-all duration-500 py-4 ${
           isScrolled ? "glass-effect shadow-lg" : "bg-transparent"
+        } ${
+          isHidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
         }`}
         data-testid="main-navigation"
       >
