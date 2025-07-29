@@ -46,6 +46,7 @@ export default function Navigation() {
     { id: "home", label: "Home" },
     { id: "services", label: "Services" },
     { id: "about", label: "About" },
+    { id: "owners", label: "Leadership" },
     { id: "gallery", label: "Gallery" },
     { id: "contact", label: "Contact" },
   ];
