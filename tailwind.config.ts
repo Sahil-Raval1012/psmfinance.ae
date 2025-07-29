@@ -61,6 +61,14 @@ export default {
           border: "var(--sidebar-border)",
           ring: "var(--sidebar-ring)",
         },
+        'navy': 'hsl(var(--navy))',
+        'royal': 'hsl(var(--royal))',
+        'steel': 'hsl(var(--steel))',
+        'accent-blue': 'hsl(var(--accent-blue))',
+        'light-blue': 'hsl(var(--light-blue))',
+        'gold-accent': 'hsl(var(--gold-accent))',
+        'platinum': 'hsl(var(--platinum))',
+        'charcoal': 'hsl(var(--charcoal))',
       },
       keyframes: {
         "accordion-down": {

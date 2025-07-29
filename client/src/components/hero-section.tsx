@@ -1,5 +1,6 @@
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Crown, Shield, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ScrollReveal } from "@/hooks/use-scroll-reveal";
 
 export default function HeroSection() {
   const scrollToServices = () => {
@@ -26,41 +27,86 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with luxury UAE business skyline */}
+      {/* Premium Background with Enhanced Luxury Effects */}
       <div 
-        className="absolute inset-0 parallax"
+        className="absolute inset-0 parallax-container"
         style={{
-          backgroundImage: `linear-gradient(rgba(26, 35, 126, 0.7), rgba(21, 101, 192, 0.8)), url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')`,
+          backgroundImage: `linear-gradient(135deg, rgba(26, 35, 126, 0.85) 0%, rgba(21, 101, 192, 0.75) 50%, rgba(13, 31, 45, 0.9) 100%), url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center'
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+          filter: 'brightness(0.8) contrast(1.3) saturate(1.2)'
         }}
       />
       
-      <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-6">
-        <h1 className="text-5xl md:text-7xl font-medium mb-6 animate-fade-in-up luxury-serif tracking-wide">
-          LUXURY FINANCIAL
-          <span className="block text-accent-blue">EXCELLENCE</span>
-        </h1>
-        <p className="text-xl md:text-2xl mb-8 opacity-90 animate-fade-in-up luxury-sans font-light" style={{ animationDelay: '0.3s' }}>
-          Where prestige meets performance - trusted by the UAE's most discerning investors since 2010
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-          <Button 
-            onClick={scrollToServices}
-            className="bg-accent-blue hover:bg-royal text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-2xl luxury-sans"
-            data-testid="explore-services-button"
-          >
-            Discover Elite Services
-          </Button>
-          <Button 
-            variant="outline"
-            onClick={scrollToContact}
-            className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-4 rounded-lg font-medium transition-all duration-300 luxury-sans"
-            data-testid="contact-us-button"
-          >
-            Begin Your Journey
-          </Button>
-        </div>
+      {/* Luxury Floating Elements */}
+      <div className="absolute top-20 right-20 w-40 h-40 bg-gold-accent opacity-8 rounded-full animate-float blur-2xl" />
+      <div className="absolute bottom-32 left-20 w-32 h-32 bg-accent-blue opacity-12 rounded-full animate-float blur-xl" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-1/2 right-1/3 w-24 h-24 bg-platinum opacity-15 rounded-full animate-float blur-sm" style={{ animationDelay: '4s' }} />
+
+      {/* Premium Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-navy/20 via-transparent to-charcoal/30" />
+      
+      <div className="relative z-10 text-center text-white max-w-5xl mx-auto px-6">
+        <ScrollReveal>
+          {/* Luxury Badge */}
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-3 mb-8 luxury-card">
+            <Crown size={20} className="text-gold-accent" />
+            <span className="luxury-sans-medium text-sm tracking-wide">EST. 2009 • UAE CENTRAL BANK LICENSED</span>
+            <Shield size={20} className="text-accent-blue" />
+          </div>
+
+          <h1 className="text-6xl md:text-8xl font-medium mb-8 animate-luxury-fade luxury-serif-bold tracking-tight">
+            <span className="text-gradient-luxury">LUXURY FINANCIAL</span>
+            <span className="block text-gradient-gold mt-2">EXCELLENCE</span>
+          </h1>
+        </ScrollReveal>
+
+        <ScrollReveal delay={300}>
+          <p className="text-2xl md:text-3xl mb-12 opacity-95 luxury-sans font-light leading-relaxed max-w-4xl mx-auto">
+            The UAE's most exclusive guardian of wealth — where <em className="text-gold-accent luxury-serif">prestige meets precision</em>, and discretion defines excellence.
+          </p>
+        </ScrollReveal>
+
+        <ScrollReveal delay={600}>
+          {/* Luxury Stats */}
+          <div className="flex flex-wrap justify-center gap-8 mb-12">
+            <div className="text-center luxury-card px-6 py-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10">
+              <div className="text-3xl font-medium text-gold-accent luxury-serif mb-1">AED 2.5B+</div>
+              <div className="text-sm opacity-80 luxury-sans tracking-wide">ASSETS UNDER MANAGEMENT</div>
+            </div>
+            <div className="text-center luxury-card px-6 py-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10">
+              <div className="text-3xl font-medium text-accent-blue luxury-serif mb-1">500+</div>
+              <div className="text-sm opacity-80 luxury-sans tracking-wide">ELITE FAMILIES SERVED</div>
+            </div>
+            <div className="text-center luxury-card px-6 py-4 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10">
+              <div className="text-3xl font-medium text-gold-accent luxury-serif mb-1">98.7%</div>
+              <div className="text-sm opacity-80 luxury-sans tracking-wide">CLIENT RETENTION</div>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button 
+              onClick={scrollToServices}
+              className="luxury-button bg-gradient-to-r from-accent-blue to-royal hover:from-royal hover:to-accent-blue text-white px-10 py-5 rounded-2xl font-medium transition-all duration-500 hover:scale-105 hover:shadow-2xl luxury-sans-medium tracking-wide"
+              data-testid="explore-services-button"
+              size="lg"
+            >
+              <Crown className="mr-2" size={20} />
+              Discover Elite Services
+            </Button>
+            <Button 
+              variant="outline"
+              onClick={scrollToContact}
+              className="luxury-button border-2 border-gold-accent text-gold-accent hover:bg-gold-accent hover:text-charcoal px-10 py-5 rounded-2xl font-medium transition-all duration-500 hover:scale-105 luxury-sans-medium tracking-wide backdrop-blur-sm bg-white/5"
+              data-testid="contact-us-button"
+              size="lg"
+            >
+              <Star className="mr-2" size={20} />
+              Begin Your Legacy
+            </Button>
+          </div>
+        </ScrollReveal>
       </div>
 
       {/* Floating 3D elements */}

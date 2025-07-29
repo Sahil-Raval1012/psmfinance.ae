@@ -40,76 +40,95 @@ export default function OwnersSection() {
   ];
 
   return (
-    <section id="owners" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <ScrollReveal className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-medium text-navy mb-6 luxury-serif tracking-wide">Meet Your Trusted Advisors</h2>
-          <p className="text-xl text-steel max-w-3xl mx-auto luxury-sans font-light">
-            Led by two distinguished professionals whose combined expertise and unwavering integrity have earned the trust of the UAE's most prominent families and institutions
+    <section id="owners" className="py-32 bg-gradient-to-br from-platinum via-light-blue to-white relative overflow-hidden">
+      {/* Premium background pattern with luxury texture */}
+      <div className="absolute inset-0 opacity-3">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4AF37' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='m0 60 60-60h-60v60zm60 0v-60h-60l60 60z'/%3E%3C/g%3E%3C/svg%3E")`,
+        }} />
+      </div>
+      
+      {/* Floating luxury elements */}
+      <div className="absolute top-20 left-20 w-32 h-32 bg-gold-accent opacity-5 rounded-full animate-float blur-3xl" />
+      <div className="absolute bottom-20 right-20 w-40 h-40 bg-royal opacity-8 rounded-full animate-float blur-2xl" style={{ animationDelay: '3s' }} />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <ScrollReveal className="text-center mb-20">
+          <div className="inline-flex items-center gap-3 bg-white/70 backdrop-blur-sm border border-gold-accent/20 rounded-full px-8 py-4 mb-8">
+            <Award className="text-gold-accent" size={24} />
+            <span className="luxury-sans-medium text-steel tracking-wide">DISTINGUISHED LEADERSHIP</span>
+          </div>
+          <h2 className="text-5xl md:text-7xl font-medium text-gradient-luxury mb-8 luxury-serif-bold tracking-tight">
+            Meet Your <span className="text-gradient-gold">Trusted Advisors</span>
+          </h2>
+          <p className="text-2xl text-charcoal max-w-4xl mx-auto luxury-sans font-light leading-relaxed">
+            Led by two distinguished professionals whose combined expertise and <em className="text-gold-accent luxury-serif">unwavering integrity</em> have earned the trust of the UAE's most prominent families and institutions
           </p>
         </ScrollReveal>
 
         <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
           {owners.map((owner, index) => (
             <ScrollReveal key={owner.name} delay={index * 200}>
-              <div className="bg-gradient-to-br from-light-blue to-white rounded-3xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500">
+              <div className="luxury-card bg-gradient-to-br from-white/90 via-white/95 to-platinum/50 rounded-3xl p-10 shadow-2xl border border-white/20 backdrop-blur-sm hover:scale-105 transition-all duration-700 hover:shadow-3xl">
                 <div className="flex flex-col items-center text-center mb-8">
                   <div className="relative mb-6">
                     <img 
                       src={owner.image} 
                       alt={owner.name}
-                      className="w-32 h-32 rounded-full object-cover shadow-lg ring-4 ring-accent-blue/20"
+                      className="w-40 h-40 rounded-full object-cover shadow-2xl ring-4 ring-gold-accent/30 filter brightness-110 contrast-105"
                       data-testid={`owner-image-${index}`}
                     />
-                    <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-accent-blue rounded-full flex items-center justify-center">
-                      <Award size={20} className="text-white" />
+                    <div className="absolute -bottom-3 -right-3 w-12 h-12 bg-gradient-to-br from-gold-accent to-accent-blue rounded-full flex items-center justify-center shadow-lg">
+                      <Award size={24} className="text-white" />
                     </div>
                   </div>
                   
-                  <h3 className="text-2xl font-medium text-navy mb-2 luxury-serif">{owner.name}</h3>
-                  <p className="text-accent-blue font-medium mb-4 luxury-sans">{owner.title}</p>
+                  <h3 className="text-3xl font-semibold text-gradient-luxury mb-3 luxury-serif-bold tracking-tight" data-testid={`owner-name-${index}`}>
+                    {owner.name}
+                  </h3>
+                  <p className="text-gold-accent font-medium mb-6 luxury-sans-medium tracking-wide text-lg" data-testid={`owner-title-${index}`}>
+                    {owner.title}
+                  </p>
                   
-                  <div className="flex items-center gap-4 text-steel mb-6">
-                    <div className="flex items-center gap-2">
-                      <TrendingUp size={16} className="text-accent-blue" />
-                      <span className="text-sm luxury-sans font-medium">{owner.experience}</span>
-                    </div>
+                  <div className="flex items-center justify-center gap-3 text-charcoal mb-8 bg-white/50 backdrop-blur-sm rounded-full px-6 py-3 border border-gold-accent/20">
+                    <TrendingUp size={18} className="text-gold-accent" />
+                    <span className="luxury-sans-medium font-medium">{owner.experience}</span>
                   </div>
                 </div>
 
                 <div className="space-y-6">
                   <div>
-                    <h4 className="text-lg font-medium text-navy mb-3 luxury-serif flex items-center gap-2">
-                      <GraduationCap size={20} className="text-accent-blue" />
+                    <h4 className="text-xl font-medium text-gradient-luxury mb-4 luxury-serif-bold flex items-center gap-3">
+                      <GraduationCap size={22} className="text-gold-accent" />
                       Credentials
                     </h4>
-                    <ul className="space-y-2">
+                    <ul className="space-y-3">
                       {owner.credentials.map((credential, credIndex) => (
-                        <li key={credIndex} className="text-steel luxury-sans font-light flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 bg-accent-blue rounded-full"></div>
-                          {credential}
+                        <li key={credIndex} className="text-charcoal luxury-sans flex items-center gap-3">
+                          <div className="w-2 h-2 bg-gradient-to-r from-gold-accent to-accent-blue rounded-full"></div>
+                          <span className="font-medium">{credential}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
                   <div>
-                    <h4 className="text-lg font-medium text-navy mb-3 luxury-serif flex items-center gap-2">
-                      <Users size={20} className="text-accent-blue" />
+                    <h4 className="text-xl font-medium text-gradient-luxury mb-4 luxury-serif-bold flex items-center gap-3">
+                      <Users size={22} className="text-gold-accent" />
                       Specializations
                     </h4>
-                    <ul className="space-y-2">
+                    <ul className="space-y-3">
                       {owner.specialties.map((specialty, specIndex) => (
-                        <li key={specIndex} className="text-steel luxury-sans font-light flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 bg-accent-blue rounded-full"></div>
-                          {specialty}
+                        <li key={specIndex} className="text-charcoal luxury-sans flex items-center gap-3">
+                          <div className="w-2 h-2 bg-gradient-to-r from-gold-accent to-accent-blue rounded-full"></div>
+                          <span className="font-medium">{specialty}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
                   <div>
-                    <p className="text-steel luxury-sans font-light leading-relaxed">
+                    <p className="text-charcoal luxury-sans leading-relaxed text-lg font-light">
                       {owner.bio}
                     </p>
                   </div>

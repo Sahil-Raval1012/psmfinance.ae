@@ -58,7 +58,9 @@ export default function Navigation() {
     <>
       <nav 
         className={`fixed top-0 w-full z-50 transition-all duration-500 py-4 ${
-          isScrolled ? "glass-effect shadow-lg" : "bg-transparent"
+          isScrolled 
+            ? "luxury-card bg-white/90 backdrop-blur-2xl shadow-2xl border-b border-gold-accent/20" 
+            : "bg-transparent"
         } ${
           isHidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
         }`}
@@ -67,10 +69,12 @@ export default function Navigation() {
         <div className="container mx-auto px-6 flex justify-between items-center">
           <Link href="/">
             <div 
-              className="text-2xl font-medium text-white luxury-serif cursor-pointer"
+              className={`text-2xl font-medium cursor-pointer luxury-serif-bold tracking-tight transition-all duration-300 ${
+                isScrolled ? "text-gradient-luxury" : "text-white"
+              }`}
               data-testid="logo"
             >
-              PSM FINANCIAL BROKER
+              PSM <span className={isScrolled ? "text-gradient-gold" : "text-gold-accent"}>FINANCIAL</span>
             </div>
           </Link>
           
@@ -80,8 +84,10 @@ export default function Navigation() {
               <Link key={item.id} href={item.path}>
                 <button
                   onClick={() => handleNavClick(item)}
-                  className={`text-white hover:text-accent-blue transition-colors font-normal luxury-sans ${
-                    location === item.path ? 'text-accent-blue' : ''
+                  className={`transition-all duration-300 font-medium luxury-sans-medium tracking-wide hover:scale-105 ${
+                    isScrolled 
+                      ? `${location === item.path ? 'text-gold-accent' : 'text-charcoal hover:text-gold-accent'}`
+                      : `${location === item.path ? 'text-gold-accent' : 'text-white hover:text-gold-accent'}`
                   }`}
                   data-testid={`nav-${item.id}`}
                 >
@@ -105,14 +111,14 @@ export default function Navigation() {
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-navy shadow-lg">
-            <div className="flex flex-col space-y-4 p-6">
+          <div className="md:hidden absolute top-full left-0 w-full luxury-card bg-white/95 backdrop-blur-2xl shadow-2xl border-t border-gold-accent/20">
+            <div className="flex flex-col space-y-6 p-8">
               {navItems.map((item) => (
                 <Link key={item.id} href={item.path}>
                   <button
                     onClick={() => handleNavClick(item)}
-                    className={`text-white hover:text-accent-blue transition-colors font-normal luxury-sans text-left ${
-                      location === item.path ? 'text-accent-blue' : ''
+                    className={`transition-all duration-300 font-medium luxury-sans-medium text-left tracking-wide hover:scale-105 ${
+                      location === item.path ? 'text-gold-accent' : 'text-charcoal hover:text-gold-accent'
                     }`}
                     data-testid={`mobile-nav-${item.id}`}
                   >
