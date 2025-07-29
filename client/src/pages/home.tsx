@@ -6,7 +6,7 @@ import OwnersSection from "@/components/owners-section";
 import CredentialsSection from "@/components/credentials-section";
 import GallerySection from "@/components/gallery-section";
 import ContactSection from "@/components/contact-section";
-import Footer from "@/components/footer";
+import UniqueFooter from "@/components/unique-footer";
 
 export default function Home() {
   return (
@@ -19,7 +19,7 @@ export default function Home() {
       <CredentialsSection />
       <GallerySection />
       <ContactSection />
-      <Footer />
+      <UniqueFooter />
     </div>
   );
 }
