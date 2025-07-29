@@ -101,7 +101,7 @@ export default function ContactSection() {
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-navy mb-6 optima-font">Get In Touch</h2>
+            <h2 className="text-4xl md:text-5xl font-normal text-navy mb-6 optima-font">Get In Touch</h2>
             <p className="text-xl text-steel optima-font">
               Ready to elevate your financial future? Contact our expert team for personalized consultation
             </p>
@@ -111,7 +111,7 @@ export default function ContactSection() {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-semibold text-navy mb-6 optima-font">Contact Information</h3>
+                <h3 className="text-2xl font-normal text-navy mb-6 optima-font">Contact Information</h3>
                 
                 <div className="space-y-6">
                   {contactInfo.map((info, index) => {
@@ -122,7 +122,7 @@ export default function ContactSection() {
                           <IconComponent size={20} />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-navy mb-1 optima-font">{info.title}</h4>
+                          <h4 className="font-normal text-navy mb-1 optima-font">{info.title}</h4>
                           {info.content.map((line, lineIndex) => (
                             <p key={lineIndex} className="text-steel optima-font">{line}</p>
                           ))}
@@ -139,7 +139,7 @@ export default function ContactSection() {
               <form onSubmit={handleSubmit} className="space-y-6" data-testid="contact-form">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-navy font-semibold mb-2 optima-font">First Name</label>
+                    <label className="block text-navy font-normal mb-2 optima-font">First Name</label>
                     <Input
                       type="text"
                       value={formData.firstName}
@@ -151,7 +151,7 @@ export default function ContactSection() {
                     />
                   </div>
                   <div>
-                    <label className="block text-navy font-semibold mb-2 optima-font">Last Name</label>
+                    <label className="block text-navy font-normal mb-2 optima-font">Last Name</label>
                     <Input
                       type="text"
                       value={formData.lastName}
@@ -165,7 +165,7 @@ export default function ContactSection() {
                 </div>
                 
                 <div>
-                  <label className="block text-navy font-semibold mb-2 optima-font">Email Address</label>
+                  <label className="block text-navy font-normal mb-2 optima-font">Email Address</label>
                   <Input
                     type="email"
                     value={formData.email}
@@ -178,7 +178,7 @@ export default function ContactSection() {
                 </div>
                 
                 <div>
-                  <label className="block text-navy font-semibold mb-2 optima-font">Phone Number</label>
+                  <label className="block text-navy font-normal mb-2 optima-font">Phone Number</label>
                   <Input
                     type="tel"
                     value={formData.phone}
@@ -191,7 +191,7 @@ export default function ContactSection() {
                 </div>
                 
                 <div>
-                  <label className="block text-navy font-semibold mb-2 optima-font">Service Interest</label>
+                  <label className="block text-navy font-normal mb-2 optima-font">Service Interest</label>
                   <Select 
                     value={formData.service} 
                     onValueChange={(value) => handleInputChange('service', value)}
@@ -211,7 +211,7 @@ export default function ContactSection() {
                 </div>
                 
                 <div>
-                  <label className="block text-navy font-semibold mb-2 optima-font">Message</label>
+                  <label className="block text-navy font-normal mb-2 optima-font">Message</label>
                   <Textarea
                     value={formData.message}
                     onChange={(e) => handleInputChange('message', e.target.value)}
@@ -226,7 +226,7 @@ export default function ContactSection() {
                 <Button 
                   type="submit" 
                   disabled={contactMutation.isPending}
-                  className="w-full bg-navy hover:bg-royal text-white font-semibold py-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl optima-font"
+                  className="w-full bg-navy hover:bg-royal text-white font-normal py-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl optima-font"
                   data-testid="submit-contact-form"
                 >
                   {contactMutation.isPending ? "Sending..." : "Send Message"}

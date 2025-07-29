@@ -26,7 +26,7 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
-            <h3 className="text-2xl font-bold mb-6 optima-font">PSM FINANCIAL BROKER</h3>
+            <h3 className="text-2xl font-normal mb-6 optima-font">PSM FINANCIAL BROKER</h3>
             <p className="text-gray-300 mb-6 optima-font">
               Premier financial brokerage services in the UAE, delivering excellence and trust in every client relationship.
             </p>
@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-6 optima-font">Services</h4>
+            <h4 className="text-lg font-normal mb-6 optima-font">Services</h4>
             <ul className="space-y-3 text-gray-300">
               {serviceLinks.map((service, index) => (
                 <li key={service}>
@@ -66,7 +66,7 @@ export default function Footer() {
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-6 optima-font">Company</h4>
+            <h4 className="text-lg font-normal mb-6 optima-font">Company</h4>
             <ul className="space-y-3 text-gray-300">
               {companyLinks.map((link, index) => (
                 <li key={link}>
@@ -83,7 +83,7 @@ export default function Footer() {
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-6 optima-font">Contact</h4>
+            <h4 className="text-lg font-normal mb-6 optima-font">Contact</h4>
             <ul className="space-y-3 text-gray-300 optima-font">
               <li>Emirates Towers, Level 45</li>
               <li>Dubai, UAE</li>

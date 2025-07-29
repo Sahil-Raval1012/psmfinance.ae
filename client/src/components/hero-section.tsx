@@ -29,7 +29,7 @@ export default function HeroSection() {
       />
       
       <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-6">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in-up optima-font">
+        <h1 className="text-5xl md:text-7xl font-normal mb-6 animate-fade-in-up optima-font">
           PREMIUM FINANCIAL
           <span className="block text-accent-blue">BROKERAGE</span>
         </h1>
@@ -39,7 +39,7 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
           <Button 
             onClick={scrollToServices}
-            className="bg-accent-blue hover:bg-royal text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl optima-font"
+            className="bg-accent-blue hover:bg-royal text-white px-8 py-4 rounded-lg font-normal transition-all duration-300 hover:scale-105 hover:shadow-2xl optima-font"
             data-testid="explore-services-button"
           >
             Explore Services
@@ -47,7 +47,7 @@ export default function HeroSection() {
           <Button 
             variant="outline"
             onClick={scrollToContact}
-            className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-4 rounded-lg font-semibold transition-all duration-300 optima-font"
+            className="border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-4 rounded-lg font-normal transition-all duration-300 optima-font"
             data-testid="contact-us-button"
           >
             Contact Us

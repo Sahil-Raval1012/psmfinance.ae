@@ -27,7 +27,7 @@ export default function GallerySection() {
     <section id="gallery" className="py-20 bg-light-blue">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-navy mb-6 optima-font">Our Premium Spaces</h2>
+          <h2 className="text-4xl md:text-5xl font-normal text-navy mb-6 optima-font">Our Premium Spaces</h2>
           <p className="text-xl text-steel max-w-3xl mx-auto optima-font">
             Experience our world-class facilities and professional environment designed for excellence
           </p>
@@ -47,7 +47,7 @@ export default function GallerySection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <div className="absolute bottom-4 left-4 text-white">
-                  <h3 className="text-lg font-semibold optima-font">{item.title}</h3>
+                  <h3 className="text-lg font-normal optima-font">{item.title}</h3>
                 </div>
               </div>
             </div>
