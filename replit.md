@@ -49,15 +49,20 @@ The application uses a comprehensive design system with:
 ## Data Flow
 
 1. **Contact Form Submission**: 
-   - Client-side form validation using React Hook Form
-   - Data submission via TanStack Query mutation
-   - Server-side validation using Zod schemas
-   - Storage in memory (designed for future database integration)
-   - Success/error feedback via toast notifications
+   - EmailJS client-side email integration with comprehensive error handling
+   - Form validation and submission feedback via toast notifications
+   - Auto-reply functionality for client confirmations
+   - Secure environment variable configuration for API keys
 
-2. **Content Rendering**:
-   - Static content rendered from React components
-   - Responsive images loaded from Unsplash CDN
+2. **Content Management**:
+   - Rowy CMS integration with Firebase/Firestore for dynamic content
+   - Real-time content updates through Rowy's spreadsheet interface
+   - Graceful fallback to hardcoded content when CMS not configured
+   - Type-safe content hooks for all major website sections
+
+3. **Content Rendering**:
+   - Dynamic content loading from CMS or fallback data
+   - Responsive images optimized through Firebase Storage
    - Smooth scrolling navigation between sections
    - Mobile-responsive design with hamburger menu
 
@@ -85,6 +90,13 @@ The application uses a comprehensive design system with:
 - **EmailJS** for client-side email sending without backend requirements
 - **Environment variables** for secure API key management
 - **Comprehensive error handling** and user feedback system
+
+### Content Management System (CMS)
+- **Rowy CMS** integrated with Firebase/Firestore for headless content management
+- **Graceful fallback system** - website works with hardcoded content when CMS not configured
+- **Real-time content updates** through Rowy's spreadsheet-like interface
+- **Comprehensive content hooks** for hero, services, about, contact, gallery, and credentials
+- **Type-safe content interfaces** with full TypeScript support
 
 ### Development Tools
 - **ESBuild** for server-side bundling
