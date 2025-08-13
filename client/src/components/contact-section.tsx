@@ -1,20 +1,3 @@
-/**
- * PSM Financial Broker - Contact Form with EmailJS Integration
- * 
- * This component provides a luxury contact form with dual email delivery:
- * 1. Primary: EmailJS for direct email delivery (requires setup)
- * 2. Fallback: Server-side API handling
- * 
- * EmailJS Setup Required:
- * - Create account at https://www.emailjs.com/
- * - Set environment variables in .env:
- *   VITE_EMAILJS_SERVICE_ID=your_service_id
- *   VITE_EMAILJS_TEMPLATE_ID=your_template_id  
- *   VITE_EMAILJS_PUBLIC_KEY=your_public_key
- * 
- * See EMAILJS_SETUP.md for complete setup instructions
- */
-
 import { useState } from "react";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -24,7 +7,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
-import emailjs from '@emailjs/browser';
 
 interface ContactFormData {
   firstName: string;
@@ -37,7 +19,6 @@ interface ContactFormData {
 
 export default function ContactSection() {
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<ContactFormData>({
     firstName: '',
     lastName: '',
@@ -47,42 +28,6 @@ export default function ContactSection() {
     message: ''
   });
 
-  // EmailJS Configuration
-  const EMAILJS_CONFIG = {
-    serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || 'your_service_id',
-    templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'your_template_id',
-    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'your_public_key'
-  };
-
-  // Initialize EmailJS
-  const initializeEmailJS = () => {
-    if (EMAILJS_CONFIG.publicKey !== 'your_public_key') {
-      emailjs.init(EMAILJS_CONFIG.publicKey);
-    }
-  };
-
-  // EmailJS send function
-  const sendEmailJS = async (data: ContactFormData) => {
-    initializeEmailJS();
-    
-    const templateParams = {
-      to_name: 'PSM Financial Broker',
-      from_name: `${data.firstName} ${data.lastName}`,
-      from_email: data.email,
-      phone: data.phone,
-      service_interest: data.service,
-      message: data.message,
-      reply_to: data.email,
-    };
-
-    return emailjs.send(
-      EMAILJS_CONFIG.serviceId,
-      EMAILJS_CONFIG.templateId,
-      templateParams
-    );
-  };
-
-  // Fallback server mutation (existing functionality)
   const contactMutation = useMutation({
     mutationFn: async (data: ContactFormData) => {
       return await apiRequest('POST', '/api/contact', data);
@@ -92,7 +37,14 @@ export default function ContactSection() {
         title: "Message Sent Successfully",
         description: "Thank you for your interest! We will contact you shortly.",
       });
-      resetForm();
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: ''
+      });
     },
     onError: () => {
       toast({
@@ -103,55 +55,9 @@ export default function ContactSection() {
     },
   });
 
-  const resetForm = () => {
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      service: '',
-      message: ''
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    // Validate required fields
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
-      toast({
-        title: "Validation Error",
-        description: "Please fill in all required fields.",
-        variant: "destructive",
-      });
-      setIsSubmitting(false);
-      return;
-    }
-
-    try {
-      // Try EmailJS first if configured
-      if (EMAILJS_CONFIG.serviceId !== 'your_service_id' && 
-          EMAILJS_CONFIG.templateId !== 'your_template_id' && 
-          EMAILJS_CONFIG.publicKey !== 'your_public_key') {
-        
-        await sendEmailJS(formData);
-        toast({
-          title: "Message Sent Successfully",
-          description: "Thank you for your interest! We will contact you within 24 hours.",
-        });
-        resetForm();
-      } else {
-        // Fallback to server-side handling
-        contactMutation.mutate(formData);
-      }
-    } catch (error) {
-      console.error('EmailJS Error:', error);
-      // Fallback to server if EmailJS fails
-      contactMutation.mutate(formData);
-    } finally {
-      setIsSubmitting(false);
-    }
+    contactMutation.mutate(formData);
   };
 
   const handleInputChange = (field: keyof ContactFormData, value: string) => {
@@ -182,13 +88,12 @@ export default function ContactSection() {
   ];
 
   const serviceOptions = [
-    { value: "private-wealth-mastery", label: "Private Wealth Mastery (AED 50M+)" },
-    { value: "elite-investment-counsel", label: "Elite Investment Counsel (AED 10M+)" },
-    { value: "corporate-excellence", label: "Corporate Excellence (AED 25M+)" },
-    { value: "alternative-investments", label: "Alternative Investments" },
-    { value: "islamic-finance", label: "Islamic Finance Solutions" },
-    { value: "global-market-access", label: "Global Market Access" },
-    { value: "consultation", label: "General Consultation" }
+    { value: "investment-advisory", label: "Investment Advisory" },
+    { value: "corporate-finance", label: "Corporate Finance" },
+    { value: "wealth-management", label: "Wealth Management" },
+    { value: "market-analysis", label: "Market Analysis" },
+    { value: "risk-management", label: "Risk Management" },
+    { value: "digital-solutions", label: "Digital Solutions" }
   ];
 
   return (
@@ -320,11 +225,11 @@ export default function ContactSection() {
                 
                 <Button 
                   type="submit" 
-                  disabled={isSubmitting || contactMutation.isPending}
+                  disabled={contactMutation.isPending}
                   className="w-full bg-navy hover:bg-royal text-white font-medium py-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl luxury-sans"
                   data-testid="submit-contact-form"
                 >
-                  {(isSubmitting || contactMutation.isPending) ? "Sending..." : "Send Confidential Message"}
+                  {contactMutation.isPending ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </div>
