@@ -1,5 +1,5 @@
 import { TrendingUp, Building, Gem, BarChart3, Shield, Smartphone } from "lucide-react";
-import { ScrollReveal } from "@/hooks/use-scroll-reveal";
+import { ScrollReveal, ScrollStagger } from "@/hooks/use-scroll-reveal";
 
 export default function ServicesSection() {
   const services = [
@@ -58,27 +58,30 @@ export default function ServicesSection() {
               <ScrollReveal 
                 key={service.title}
                 delay={index * 100}
-                className="hover-3d bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden"
+                direction="scale"
+                className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:border-accent-blue/20"
+                data-testid={`service-card-${index}`}
               >
-                <div data-testid={`service-card-${index}`}>
+                <div className="relative overflow-hidden">
                   <img 
                     src={service.image} 
                     alt={service.title} 
-                    className="w-full h-48 object-cover"
+                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="p-6">
-                    <div className="w-12 h-12 bg-accent-blue text-white rounded-lg flex items-center justify-center mb-4">
-                      <IconComponent size={24} />
-                    </div>
-                    <h3 className="text-xl font-medium text-navy mb-3 luxury-sans">{service.title}</h3>
-                    <p className="text-steel mb-4 luxury-sans font-light">{service.description}</p>
-                    <button 
-                      className="text-accent-blue font-medium hover:text-royal transition-colors luxury-sans"
-                      data-testid={`service-learn-more-${index}`}
-                    >
-                      Learn More →
-                    </button>
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </div>
+                <div className="p-6">
+                  <div className="w-12 h-12 bg-accent-blue text-white rounded-lg flex items-center justify-center mb-4 group-hover:bg-royal transition-colors duration-300">
+                    <IconComponent size={24} />
                   </div>
+                  <h3 className="text-xl font-medium text-navy mb-3 luxury-serif group-hover:text-accent-blue transition-colors duration-300">{service.title}</h3>
+                  <p className="text-steel mb-4 luxury-sans font-light leading-relaxed">{service.description}</p>
+                  <button 
+                    className="text-accent-blue font-medium hover:text-royal transition-colors luxury-sans group-hover:translate-x-1 transform duration-300"
+                    data-testid={`service-learn-more-${index}`}
+                  >
+                    Learn More →
+                  </button>
                 </div>
               </ScrollReveal>
             );

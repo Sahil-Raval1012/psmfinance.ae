@@ -1,3 +1,5 @@
+import { ScrollReveal } from "@/hooks/use-scroll-reveal";
+
 export default function GallerySection() {
   const galleryItems = [
     {
@@ -35,8 +37,10 @@ export default function GallerySection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {galleryItems.map((item, index) => (
-            <div 
+            <ScrollReveal 
               key={item.title}
+              delay={index * 150}
+              direction="scale"
               className={`relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 ${item.span || ''}`}
               data-testid={`gallery-item-${index}`}
             >
@@ -50,7 +54,7 @@ export default function GallerySection() {
                   <h3 className="text-lg font-medium luxury-sans">{item.title}</h3>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

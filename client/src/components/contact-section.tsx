@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { ScrollReveal } from "@/hooks/use-scroll-reveal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -100,20 +101,21 @@ export default function ContactSection() {
     <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
+          <ScrollReveal className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-medium text-navy mb-6 luxury-serif tracking-wide">Begin Your Legacy</h2>
             <p className="text-xl text-steel luxury-sans font-light">
               Experience the discretion and excellence that the UAE's most successful families trust. Schedule your private consultation today.
             </p>
-          </div>
+          </ScrollReveal>
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Information */}
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-medium text-navy mb-6 luxury-serif">Private Banking Center</h3>
-                
-                <div className="space-y-6">
+            <ScrollReveal direction="left" delay={200}>
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-2xl font-medium text-navy mb-6 luxury-serif">Private Banking Center</h3>
+                  
+                  <div className="space-y-6">
                   {contactInfo.map((info, index) => {
                     const IconComponent = info.icon;
                     return (
@@ -130,12 +132,14 @@ export default function ContactSection() {
                       </div>
                     );
                   })}
+                  </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Contact Form */}
-            <div className="bg-gradient-to-br from-light-blue to-white p-8 rounded-2xl shadow-lg">
+            <ScrollReveal direction="right" delay={400}>
+              <div className="bg-gradient-to-br from-light-blue to-white p-8 rounded-2xl shadow-lg">
               <form onSubmit={handleSubmit} className="space-y-6" data-testid="contact-form">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -232,7 +236,8 @@ export default function ContactSection() {
                   {contactMutation.isPending ? "Sending..." : "Send Message"}
                 </Button>
               </form>
-            </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </div>
