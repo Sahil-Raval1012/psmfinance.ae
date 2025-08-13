@@ -124,11 +124,26 @@ psm-financial-broker/
 
 ## Troubleshooting
 
-**Port already in use:**
+**Port 5000 already in use (most common issue):**
 ```bash
-# Kill process using port 5000
-npx kill-port 5000
+# Option 1: Kill process using port 5000 (Mac/Linux)
+lsof -ti:5000 | xargs kill -9
 npm run dev
+
+# Option 2: Use a different port
+PORT=3000 npm run dev
+# Then open http://localhost:3000
+
+# Option 3: Check what's using port 5000
+lsof -i :5000
+```
+
+**On Windows:**
+```bash
+# Find process using port 5000
+netstat -ano | findstr :5000
+# Kill the process (replace PID with actual number)
+taskkill /PID <PID_NUMBER> /F
 ```
 
 **Dependencies issues:**
