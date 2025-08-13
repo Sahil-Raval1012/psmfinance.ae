@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { ScrollReveal } from "@/hooks/use-scroll-reveal";
 import { Button } from "@/components/ui/button";
@@ -6,8 +6,41 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
+import emailjs from '@emailjs/browser';
+
+/**
+ * EMAILJS CONFIGURATION GUIDE
+ * 
+ * To complete the EmailJS integration, you need to:
+ * 
+ * 1. Sign up at https://www.emailjs.com/
+ * 2. Create an email service (Gmail, Outlook, etc.)
+ * 3. Create an email template with these variables:
+ *    - {{from_name}} - Client's full name
+ *    - {{from_email}} - Client's email
+ *    - {{phone}} - Client's phone number
+ *    - {{service}} - Selected service
+ *    - {{message}} - Client's message
+ *    - {{to_name}} - Your company name (PSM Financial Broker)
+ * 
+ * 4. Add these environment variables to your Replit Secrets:
+ *    - VITE_EMAILJS_SERVICE_ID: Your EmailJS service ID
+ *    - VITE_EMAILJS_TEMPLATE_ID: Your EmailJS template ID  
+ *    - VITE_EMAILJS_PUBLIC_KEY: Your EmailJS public key
+ * 
+ * 5. Optional: Add auto-reply template with these variables:
+ *    - {{to_name}} - Client's name
+ *    - {{from_name}} - Your company name
+ *    - VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID: Auto-reply template ID
+ */
+
+// EmailJS Configuration - These will be loaded from environment variables
+const EMAILJS_CONFIG = {
+  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || '',
+  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '',
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '',
+  autoReplyTemplateId: import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID || '', // Optional auto-reply
+};
 
 interface ContactFormData {
   firstName: string;
@@ -29,15 +62,125 @@ export default function ContactSection() {
     message: ''
   });
 
-  const contactMutation = useMutation({
-    mutationFn: async (data: ContactFormData) => {
-      return await apiRequest('POST', '/api/contact', data);
-    },
-    onSuccess: () => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  /**
+   * Validates if EmailJS is properly configured
+   * Checks for required environment variables
+   */
+  const isEmailJSConfigured = () => {
+    const { serviceId, templateId, publicKey } = EMAILJS_CONFIG;
+    return serviceId && templateId && publicKey;
+  };
+
+  /**
+   * Sends email using EmailJS service
+   * Includes error handling and user feedback
+   */
+  const sendEmail = async (templateParams: any) => {
+    try {
+      const response = await emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        templateParams,
+        EMAILJS_CONFIG.publicKey
+      );
+      
+      console.log('Email sent successfully:', response.status, response.text);
+      return response;
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      throw error;
+    }
+  };
+
+  /**
+   * Sends optional auto-reply email to the client
+   * This confirms receipt of their inquiry
+   */
+  const sendAutoReply = async (clientEmail: string, clientName: string) => {
+    if (!EMAILJS_CONFIG.autoReplyTemplateId) {
+      console.log('Auto-reply template not configured, skipping auto-reply');
+      return;
+    }
+
+    try {
+      const autoReplyParams = {
+        to_email: clientEmail,
+        to_name: clientName,
+        from_name: 'PSM Financial Broker',
+        reply_to: 'info@psmfinancial.ae' // Replace with your actual email
+      };
+
+      await emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.autoReplyTemplateId,
+        autoReplyParams,
+        EMAILJS_CONFIG.publicKey
+      );
+      
+      console.log('Auto-reply sent successfully');
+    } catch (error) {
+      console.error('Auto-reply failed:', error);
+      // Don't throw error for auto-reply failure
+    }
+  };
+
+  const handleInputChange = (field: keyof ContactFormData, value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
+  /**
+   * Main form submission handler
+   * Validates configuration, sends email, and provides user feedback
+   */
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Check if EmailJS is configured
+    if (!isEmailJSConfigured()) {
+      toast({
+        title: "Configuration Required",
+        description: "EmailJS is not configured. Please contact the administrator.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Prepare email template parameters
+      const templateParams = {
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        from_email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        message: formData.message,
+        to_name: 'PSM Financial Broker',
+        reply_to: formData.email,
+        // Additional useful information
+        submission_date: new Date().toLocaleString(),
+        client_timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+      };
+
+      // Send main email notification
+      await sendEmail(templateParams);
+
+      // Send auto-reply to client (optional)
+      await sendAutoReply(formData.email, formData.firstName);
+
+      // Success feedback
       toast({
         title: "Message Sent Successfully",
-        description: "Thank you for your interest! We will contact you shortly.",
+        description: "Thank you for your interest! We will contact you within 24 hours.",
       });
+
+      // Reset form
       setFormData({
         firstName: '',
         lastName: '',
@@ -46,23 +189,23 @@ export default function ContactSection() {
         service: '',
         message: ''
       });
-    },
-    onError: () => {
+
+      // Reset form reference if available
+      if (formRef.current) {
+        formRef.current.reset();
+      }
+
+    } catch (error) {
+      console.error('Form submission error:', error);
+      
       toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
+        title: "Message Failed to Send",
+        description: "Please try again or contact us directly at +971-4-XXX-XXXX",
         variant: "destructive",
       });
-    },
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    contactMutation.mutate(formData);
-  };
-
-  const handleInputChange = (field: keyof ContactFormData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -140,7 +283,7 @@ export default function ContactSection() {
             {/* Contact Form */}
             <ScrollReveal direction="right" delay={400}>
               <div className="bg-gradient-to-br from-light-blue to-white p-8 rounded-2xl shadow-lg">
-              <form onSubmit={handleSubmit} className="space-y-6" data-testid="contact-form">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6" data-testid="contact-form">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-navy font-medium mb-2 luxury-sans">First Name</label>
@@ -229,11 +372,11 @@ export default function ContactSection() {
                 
                 <Button 
                   type="submit" 
-                  disabled={contactMutation.isPending}
-                  className="w-full bg-navy hover:bg-royal text-white font-medium py-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl luxury-sans"
+                  disabled={isSubmitting}
+                  className="w-full bg-navy hover:bg-royal text-white font-medium py-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl luxury-sans disabled:opacity-50 disabled:cursor-not-allowed"
                   data-testid="submit-contact-form"
                 >
-                  {contactMutation.isPending ? "Sending..." : "Send Message"}
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </form>
               </div>

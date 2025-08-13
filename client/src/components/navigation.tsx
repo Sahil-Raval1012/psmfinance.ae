@@ -2,6 +2,22 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+/**
+ * NAVIGATION COMPONENT
+ * 
+ * Features:
+ * - Hide-on-scroll behavior for premium user experience
+ * - Glass morphism effect with backdrop blur
+ * - Smooth scrolling to page sections
+ * - Mobile-responsive hamburger menu
+ * - Luxury hover animations and transitions
+ * 
+ * Scroll Behavior:
+ * - Shows navbar when scrolling up or at top
+ * - Hides navbar when scrolling down for immersive experience
+ * - Threshold: 10px scroll distance to trigger state change
+ */
+
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);

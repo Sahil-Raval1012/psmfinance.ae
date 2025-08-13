@@ -73,13 +73,18 @@ The application uses a comprehensive design system with:
 - **Tailwind CSS** for utility-first styling
 - **Radix UI** components via shadcn/ui for accessible UI primitives
 - **Lucide React** for consistent iconography
-- **Custom fonts** (Inter) loaded from Google Fonts
+- **Custom fonts** (Playfair Display, Source Sans Pro) loaded from Google Fonts
 
 ### Data Management
 - **TanStack Query** for server state management and caching
 - **React Hook Form** with Zod resolvers for form handling
 - **Drizzle ORM** with PostgreSQL dialect for database operations
 - **Zod** for runtime type validation and schema definitions
+
+### Email Integration
+- **EmailJS** for client-side email sending without backend requirements
+- **Environment variables** for secure API key management
+- **Comprehensive error handling** and user feedback system
 
 ### Development Tools
 - **ESBuild** for server-side bundling
