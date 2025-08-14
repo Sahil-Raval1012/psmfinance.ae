@@ -99,7 +99,7 @@ export const useHeroContent = (): CMSHookResult<HeroContent> => {
     subtitle: "Exclusive wealth management for UAE's most distinguished families and enterprises. Discretion, excellence, and unparalleled expertise in every transaction.",
     primaryButtonText: "Schedule Consultation",
     secondaryButtonText: "Our Services",
-    backgroundImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+    backgroundImage: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
   };
 
   return useCMSContent('hero', fallbackContent, 'main');
