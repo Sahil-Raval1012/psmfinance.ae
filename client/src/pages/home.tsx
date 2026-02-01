@@ -6,7 +6,6 @@ import CredentialsSection from "@/components/credentials-section";
 import GallerySection from "@/components/gallery-section";
 import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
-import CMSDemo from "@/components/cms-demo";
 
 export default function Home() {
   return (
@@ -19,7 +18,6 @@ export default function Home() {
       <GallerySection />
       <ContactSection />
       <Footer />
-      <CMSDemo />
     </div>
   );
 }

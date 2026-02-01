@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { ScrollReveal } from "@/hooks/use-scroll-reveal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,38 +8,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import emailjs from '@emailjs/browser';
 
-/**
- * EMAILJS CONFIGURATION GUIDE
- * 
- * To complete the EmailJS integration, you need to:
- * 
- * 1. Sign up at https://www.emailjs.com/
- * 2. Create an email service (Gmail, Outlook, etc.)
- * 3. Create an email template with these variables:
- *    - {{from_name}} - Client's full name
- *    - {{from_email}} - Client's email
- *    - {{phone}} - Client's phone number
- *    - {{service}} - Selected service
- *    - {{message}} - Client's message
- *    - {{to_name}} - Your company name (PSM Financial Broker)
- * 
- * 4. Add these environment variables to your Replit Secrets:
- *    - VITE_EMAILJS_SERVICE_ID: Your EmailJS service ID
- *    - VITE_EMAILJS_TEMPLATE_ID: Your EmailJS template ID  
- *    - VITE_EMAILJS_PUBLIC_KEY: Your EmailJS public key
- * 
- * 5. Optional: Add auto-reply template with these variables:
- *    - {{to_name}} - Client's name
- *    - {{from_name}} - Your company name
- *    - VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID: Auto-reply template ID
- */
-
-// EmailJS Configuration - These will be loaded from environment variables
 const EMAILJS_CONFIG = {
   serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || '',
   templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '',
   publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '',
-  autoReplyTemplateId: import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID || '', // Optional auto-reply
+  autoReplyTemplateId: import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID || '',
 };
 
 interface ContactFormData {
@@ -65,19 +38,11 @@ export default function ContactSection() {
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  /**
-   * Validates if EmailJS is properly configured
-   * Checks for required environment variables
-   */
   const isEmailJSConfigured = () => {
     const { serviceId, templateId, publicKey } = EMAILJS_CONFIG;
     return serviceId && templateId && publicKey;
   };
 
-  /**
-   * Sends email using EmailJS service
-   * Includes error handling and user feedback
-   */
   const sendEmail = async (templateParams: any) => {
     try {
       const response = await emailjs.send(
@@ -86,8 +51,6 @@ export default function ContactSection() {
         templateParams,
         EMAILJS_CONFIG.publicKey
       );
-      
-      console.log('Email sent successfully:', response.status, response.text);
       return response;
     } catch (error) {
       console.error('EmailJS Error:', error);
@@ -95,22 +58,15 @@ export default function ContactSection() {
     }
   };
 
-  /**
-   * Sends optional auto-reply email to the client
-   * This confirms receipt of their inquiry
-   */
   const sendAutoReply = async (clientEmail: string, clientName: string) => {
-    if (!EMAILJS_CONFIG.autoReplyTemplateId) {
-      console.log('Auto-reply template not configured, skipping auto-reply');
-      return;
-    }
+    if (!EMAILJS_CONFIG.autoReplyTemplateId) return;
 
     try {
       const autoReplyParams = {
         to_email: clientEmail,
         to_name: clientName,
         from_name: 'PSM Financial Broker',
-        reply_to: 'info@psmfinancial.ae' // Replace with your actual email
+        reply_to: 'info@psmfinancial.ae'
       };
 
       await emailjs.send(
@@ -119,11 +75,8 @@ export default function ContactSection() {
         autoReplyParams,
         EMAILJS_CONFIG.publicKey
       );
-      
-      console.log('Auto-reply sent successfully');
     } catch (error) {
       console.error('Auto-reply failed:', error);
-      // Don't throw error for auto-reply failure
     }
   };
 
@@ -134,14 +87,9 @@ export default function ContactSection() {
     }));
   };
 
-  /**
-   * Main form submission handler
-   * Validates configuration, sends email, and provides user feedback
-   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Check if EmailJS is configured
     if (!isEmailJSConfigured()) {
       toast({
         title: "Configuration Required",
@@ -154,7 +102,6 @@ export default function ContactSection() {
     setIsSubmitting(true);
 
     try {
-      // Prepare email template parameters
       const templateParams = {
         from_name: `${formData.firstName} ${formData.lastName}`,
         from_email: formData.email,
@@ -163,24 +110,18 @@ export default function ContactSection() {
         message: formData.message,
         to_name: 'PSM Financial Broker',
         reply_to: formData.email,
-        // Additional useful information
         submission_date: new Date().toLocaleString(),
         client_timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
       };
 
-      // Send main email notification
       await sendEmail(templateParams);
-
-      // Send auto-reply to client (optional)
       await sendAutoReply(formData.email, formData.firstName);
 
-      // Success feedback
       toast({
         title: "Message Sent Successfully",
         description: "Thank you for your interest! We will contact you within 24 hours.",
       });
 
-      // Reset form
       setFormData({
         firstName: '',
         lastName: '',
@@ -190,17 +131,14 @@ export default function ContactSection() {
         message: ''
       });
 
-      // Reset form reference if available
       if (formRef.current) {
         formRef.current.reset();
       }
 
     } catch (error) {
-      console.error('Form submission error:', error);
-      
       toast({
         title: "Message Failed to Send",
-        description: "Please try again or contact us directly at +971-4-XXX-XXXX",
+        description: "Please try again or contact us directly at +971 4 123 4567",
         variant: "destructive",
       });
     } finally {
@@ -212,7 +150,7 @@ export default function ContactSection() {
     {
       icon: MapPin,
       title: "Address",
-      content: ["Dubai International Financial Centre", "Level 45, Emirates Towers", "Dubai, UAE"]
+      content: ["DIFC, Gate Building", "Level 15, Dubai, UAE"]
     },
     {
       icon: Phone,
@@ -227,7 +165,7 @@ export default function ContactSection() {
     {
       icon: Clock,
       title: "Business Hours",
-      content: ["Sunday - Thursday: 9:00 AM - 6:00 PM", "Friday - Saturday: Closed"]
+      content: ["Sun - Thu: 9:00 AM - 6:00 PM"]
     }
   ];
 
@@ -241,52 +179,59 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto">
-          <ScrollReveal className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-medium text-navy mb-6 luxury-serif tracking-wide">Begin Your Legacy</h2>
-            <p className="text-xl text-steel luxury-sans font-light">
-              Experience the discretion and excellence that the UAE's most successful families trust. Schedule your private consultation today.
-            </p>
+    <section id="contact" className="py-20 sm:py-24 lg:py-32 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <ScrollReveal className="text-center mb-16 lg:mb-20">
+          <span className="inline-block px-4 py-1.5 border border-[#0a2d6d]/20 text-[#3ce9fd] text-xs tracking-[0.25em] uppercase mb-6 luxury-sans">
+            Get In Touch
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-[#0a2d6d] mb-6 luxury-serif leading-tight">
+            Begin Your Legacy
+          </h2>
+          <p className="text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto luxury-sans font-light leading-relaxed">
+            Experience the discretion and excellence that the UAE's most successful families trust
+          </p>
+        </ScrollReveal>
+
+        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 max-w-6xl mx-auto">
+          <ScrollReveal direction="left" delay={200} className="lg:col-span-2">
+            <div className="space-y-8">
+              <h3 className="text-xl sm:text-2xl font-normal text-[#0a2d6d] luxury-serif">Private Banking Center</h3>
+              
+              <div className="space-y-6">
+                {contactInfo.map((info, index) => {
+                  const IconComponent = info.icon;
+                  return (
+                    <div key={info.title} className="flex items-start gap-4" data-testid={`contact-info-${index}`}>
+                      <div className="w-12 h-12 bg-[#0a2d6d] flex items-center justify-center flex-shrink-0">
+                        <IconComponent size={20} className="text-[#3ce9fd]" />
+                      </div>
+                      <div>
+                        <h4 className="text-[#0a2d6d] luxury-sans text-sm tracking-wider uppercase mb-1">{info.title}</h4>
+                        {info.content.map((line, lineIndex) => (
+                          <p key={lineIndex} className="text-gray-500 luxury-sans font-light">{line}</p>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="pt-8 border-t border-gray-200">
+                <p className="text-gray-500 luxury-sans font-light text-sm leading-relaxed">
+                  All consultations are conducted with complete confidentiality. 
+                  Your privacy is our utmost priority.
+                </p>
+              </div>
+            </div>
           </ScrollReveal>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Information */}
-            <ScrollReveal direction="left" delay={200}>
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-2xl font-medium text-navy mb-6 luxury-serif">Private Banking Center</h3>
-                  
-                  <div className="space-y-6">
-                  {contactInfo.map((info, index) => {
-                    const IconComponent = info.icon;
-                    return (
-                      <div key={info.title} className="flex items-start space-x-4" data-testid={`contact-info-${index}`}>
-                        <div className="w-12 h-12 bg-accent-blue text-white rounded-lg flex items-center justify-center flex-shrink-0">
-                          <IconComponent size={20} />
-                        </div>
-                        <div>
-                          <h4 className="font-medium text-navy mb-1 luxury-sans">{info.title}</h4>
-                          {info.content.map((line, lineIndex) => (
-                            <p key={lineIndex} className="text-steel luxury-sans font-light">{line}</p>
-                          ))}
-                        </div>
-                      </div>
-                    );
-                  })}
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Contact Form */}
-            <ScrollReveal direction="right" delay={400}>
-              <div className="bg-gradient-to-br from-light-blue to-white p-8 rounded-2xl shadow-lg">
+          <ScrollReveal direction="right" delay={400} className="lg:col-span-3">
+            <div className="bg-white p-6 sm:p-8 lg:p-10 border border-gray-100">
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6" data-testid="contact-form">
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-navy font-medium mb-2 luxury-sans">First Name</label>
+                    <label className="block text-[#0a2d6d] luxury-sans text-sm tracking-wider uppercase mb-2">First Name *</label>
                     <Input
                       type="text"
                       value={formData.firstName}
@@ -294,11 +239,11 @@ export default function ContactSection() {
                       placeholder="John"
                       required
                       data-testid="input-firstName"
-                      className="luxury-sans"
+                      className="luxury-sans border-gray-200 focus:border-[#3ce9fd] focus:ring-[#3ce9fd] rounded-none py-5"
                     />
                   </div>
                   <div>
-                    <label className="block text-navy font-medium mb-2 luxury-sans">Last Name</label>
+                    <label className="block text-[#0a2d6d] luxury-sans text-sm tracking-wider uppercase mb-2">Last Name *</label>
                     <Input
                       type="text"
                       value={formData.lastName}
@@ -306,13 +251,13 @@ export default function ContactSection() {
                       placeholder="Doe"
                       required
                       data-testid="input-lastName"
-                      className="luxury-sans"
+                      className="luxury-sans border-gray-200 focus:border-[#3ce9fd] focus:ring-[#3ce9fd] rounded-none py-5"
                     />
                   </div>
                 </div>
                 
                 <div>
-                  <label className="block text-navy font-medium mb-2 luxury-sans">Email Address</label>
+                  <label className="block text-[#0a2d6d] luxury-sans text-sm tracking-wider uppercase mb-2">Email Address *</label>
                   <Input
                     type="email"
                     value={formData.email}
@@ -320,12 +265,12 @@ export default function ContactSection() {
                     placeholder="john.doe@example.com"
                     required
                     data-testid="input-email"
-                    className="luxury-sans"
+                    className="luxury-sans border-gray-200 focus:border-[#3ce9fd] focus:ring-[#3ce9fd] rounded-none py-5"
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-navy font-medium mb-2 luxury-sans">Phone Number</label>
+                  <label className="block text-[#0a2d6d] luxury-sans text-sm tracking-wider uppercase mb-2">Phone Number *</label>
                   <Input
                     type="tel"
                     value={formData.phone}
@@ -333,18 +278,18 @@ export default function ContactSection() {
                     placeholder="+971 50 123 4567"
                     required
                     data-testid="input-phone"
-                    className="luxury-sans"
+                    className="luxury-sans border-gray-200 focus:border-[#3ce9fd] focus:ring-[#3ce9fd] rounded-none py-5"
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-navy font-medium mb-2 luxury-sans">Service Interest</label>
+                  <label className="block text-[#0a2d6d] luxury-sans text-sm tracking-wider uppercase mb-2">Service Interest</label>
                   <Select 
                     value={formData.service} 
                     onValueChange={(value) => handleInputChange('service', value)}
                     required
                   >
-                    <SelectTrigger data-testid="select-service" className="luxury-sans">
+                    <SelectTrigger data-testid="select-service" className="luxury-sans border-gray-200 focus:border-[#3ce9fd] focus:ring-[#3ce9fd] rounded-none py-5">
                       <SelectValue placeholder="Select a service" />
                     </SelectTrigger>
                     <SelectContent>
@@ -358,30 +303,36 @@ export default function ContactSection() {
                 </div>
                 
                 <div>
-                  <label className="block text-navy font-medium mb-2 luxury-sans">Message</label>
+                  <label className="block text-[#0a2d6d] luxury-sans text-sm tracking-wider uppercase mb-2">Message</label>
                   <Textarea
                     value={formData.message}
                     onChange={(e) => handleInputChange('message', e.target.value)}
                     rows={4}
-                    placeholder="Tell us about your financial goals and how we can help..."
+                    placeholder="Tell us about your financial goals..."
                     required
                     data-testid="textarea-message"
-                    className="luxury-sans resize-none"
+                    className="luxury-sans resize-none border-gray-200 focus:border-[#3ce9fd] focus:ring-[#3ce9fd] rounded-none"
                   />
                 </div>
                 
                 <Button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full bg-navy hover:bg-royal text-white font-medium py-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl luxury-sans disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-[#0a2d6d] hover:bg-[#3ce9fd] hover:text-[#0a2d6d] text-white py-6 rounded-none transition-all duration-500 luxury-sans tracking-wider disabled:opacity-50"
                   data-testid="submit-contact-form"
                 >
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  {isSubmitting ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 mr-2" />
+                      Send Message
+                    </>
+                  )}
                 </Button>
               </form>
-              </div>
-            </ScrollReveal>
-          </div>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

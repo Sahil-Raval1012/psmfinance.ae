@@ -1,11 +1,9 @@
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollReveal, useParallax } from "@/hooks/use-scroll-reveal";
-import { useHeroContent } from "@/hooks/use-cms-content";
 
 export default function HeroSection() {
   const parallaxOffset = useParallax();
-  const { content: heroContent, loading, error } = useHeroContent();
   
   const scrollToServices = () => {
     const element = document.getElementById("services");
@@ -31,27 +29,33 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with CMS-managed image - Parallax Effect */}
       <div 
         className="absolute inset-0"
         style={{
-          backgroundImage: `linear-gradient(rgba(26, 35, 126, 0.7), rgba(21, 101, 192, 0.8)), url('${heroContent.backgroundImage}')`,
+          backgroundImage: `linear-gradient(135deg, rgba(10, 45, 109, 0.85) 0%, rgba(10, 45, 109, 0.7) 50%, rgba(60, 233, 253, 0.3) 100%), url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           transform: `translateY(${parallaxOffset * 0.5}px)`
         }}
       />
+
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/10" />
       
-      <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-6">
+      <div className="relative z-10 text-center text-white max-w-5xl mx-auto px-6">
         <ScrollReveal direction="up" distance={50}>
-          <h1 className="text-5xl md:text-7xl font-medium mb-6 luxury-serif tracking-wide">
-            {heroContent.title}
+          <div className="mb-6">
+            <span className="inline-block px-6 py-2 border border-[#3ce9fd]/40 rounded-full text-[#3ce9fd] text-sm tracking-[0.3em] uppercase luxury-sans mb-8">
+              Premium Financial Services
+            </span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal mb-8 luxury-serif tracking-wide leading-tight">
+            PSM Financial Broker
           </h1>
         </ScrollReveal>
         
         <ScrollReveal direction="up" distance={40} delay={300}>
-          <p className="text-xl md:text-2xl mb-8 opacity-90 luxury-sans font-light">
-            {heroContent.subtitle}
+          <p className="text-lg sm:text-xl md:text-2xl mb-10 opacity-90 luxury-sans font-light max-w-3xl mx-auto leading-relaxed">
+            Crafting exclusive wealth solutions for the UAE's most distinguished clientele
           </p>
         </ScrollReveal>
         
@@ -60,31 +64,33 @@ export default function HeroSection() {
             <Button 
               onClick={scrollToContact}
               size="lg"
-              className="bg-accent-blue hover:bg-accent-blue/90 text-white px-8 py-3 text-lg font-medium luxury-sans shadow-2xl hover:shadow-accent-blue/25 transition-all duration-300 hover:scale-105"
+              className="bg-[#3ce9fd] hover:bg-white text-[#0a2d6d] px-10 py-6 text-base sm:text-lg font-normal luxury-sans shadow-2xl hover:shadow-[#3ce9fd]/25 transition-all duration-500 hover:scale-105 rounded-none"
               data-testid="button-exclusive-consultation"
             >
-{heroContent.primaryButtonText}
+              Schedule Consultation
             </Button>
             <Button 
               onClick={scrollToServices}
               variant="outline" 
               size="lg"
-              className="border-white text-white hover:bg-white hover:text-navy px-8 py-3 text-lg font-medium luxury-sans transition-all duration-300 hover:scale-105"
+              className="border-2 border-white/60 text-white hover:bg-white hover:text-[#0a2d6d] px-10 py-6 text-base sm:text-lg font-normal luxury-sans transition-all duration-500 hover:scale-105 rounded-none bg-transparent"
               data-testid="button-discover-services"
             >
-{heroContent.secondaryButtonText}
+              Explore Services
             </Button>
           </div>
         </ScrollReveal>
       </div>
 
-      {/* Floating 3D elements */}
-      <div className="absolute top-20 right-20 w-20 h-20 bg-accent-blue opacity-20 rounded-full animate-float" />
-      <div className="absolute bottom-32 left-16 w-16 h-16 bg-white opacity-10 rounded-full animate-float" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-1/4 right-10 w-32 h-32 border border-[#3ce9fd]/20 rounded-full animate-float hidden lg:block" />
+      <div className="absolute bottom-1/3 left-10 w-20 h-20 border border-white/10 rounded-full animate-float hidden lg:block" style={{ animationDelay: '3s' }} />
+      <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-[#3ce9fd] rounded-full animate-pulse hidden lg:block" />
       
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
-        <ChevronDown size={32} />
+      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-white/60 animate-bounce cursor-pointer" onClick={scrollToServices}>
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-xs tracking-[0.2em] uppercase luxury-sans">Scroll</span>
+          <ChevronDown size={24} />
+        </div>
       </div>
     </section>
   );
