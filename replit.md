@@ -91,12 +91,11 @@ The application uses a comprehensive design system with:
 - **Environment variables** for secure API key management
 - **Comprehensive error handling** and user feedback system
 
-### Content Management System (CMS)
-- **Rowy CMS** integrated with Firebase/Firestore for headless content management
-- **Graceful fallback system** - website works with hardcoded content when CMS not configured
-- **Real-time content updates** through Rowy's spreadsheet-like interface
-- **Comprehensive content hooks** for hero, services, about, contact, gallery, and credentials
-- **Type-safe content interfaces** with full TypeScript support
+### Static Content
+- **No CMS dependencies** - all content is hardcoded for maximum performance
+- **Multi-page architecture** - Home, Services, About, and Consultation pages
+- **Consistent styling** - Primary colors #3ce9fd (cyan) and #0a2d6d (dark navy)
+- **Type-safe components** with full TypeScript support
 
 ### Development Tools
 - **ESBuild** for server-side bundling
