@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -23,6 +24,9 @@ export default function Navigation() {
   const [isHidden, setIsHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [location] = useLocation();
+
+  const isHomePage = location === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,7 +52,6 @@ export default function Navigation() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      // Premium smooth scrolling with custom easing
       const targetPosition = element.offsetTop - 80;
       window.scrollTo({
         top: targetPosition,
@@ -58,12 +61,19 @@ export default function Navigation() {
     }
   };
 
-  const navItems = [
+  const homeNavItems = [
     { id: "home", label: "Home" },
     { id: "services", label: "Services" },
     { id: "about", label: "About" },
     { id: "gallery", label: "Gallery" },
     { id: "contact", label: "Contact" },
+  ];
+
+  const pageNavItems = [
+    { href: "/", label: "Home" },
+    { href: "/services", label: "Services" },
+    { href: "/about", label: "About" },
+    { href: "/consultation", label: "Consultation" },
   ];
 
   return (
@@ -77,33 +87,48 @@ export default function Navigation() {
         data-testid="main-navigation"
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
-          <div 
-            className="text-2xl font-medium text-white luxury-serif cursor-pointer"
-            onClick={() => scrollToSection("home")}
-            data-testid="logo"
-          >
-            PSM FINANCIAL BROKER
-          </div>
+          <Link href="/">
+            <div 
+              className="text-2xl font-medium text-white luxury-serif cursor-pointer"
+              data-testid="logo"
+            >
+              PSM FINANCIAL BROKER
+            </div>
+          </Link>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className="text-white hover:text-accent-blue transition-colors font-normal luxury-sans"
-                data-testid={`nav-${item.id}`}
-              >
-                {item.label}
-              </button>
-            ))}
+            {isHomePage ? (
+              homeNavItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="text-white hover:text-psm-cyan transition-colors font-normal luxury-sans"
+                  data-testid={`nav-${item.id}`}
+                >
+                  {item.label}
+                </button>
+              ))
+            ) : (
+              pageNavItems.map((item) => (
+                <Link key={item.href} href={item.href}>
+                  <span 
+                    className={`text-white hover:text-psm-cyan transition-colors font-normal luxury-sans cursor-pointer ${
+                      location === item.href ? 'text-psm-cyan' : ''
+                    }`}
+                  >
+                    {item.label}
+                  </span>
+                </Link>
+              ))
+            )}
           </div>
 
           {/* Mobile Menu Button */}
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden text-white hover:text-accent-blue"
+            className="md:hidden text-white hover:text-psm-cyan"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             data-testid="mobile-menu-toggle"
           >
@@ -113,18 +138,33 @@ export default function Navigation() {
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-navy shadow-lg">
+          <div className="md:hidden absolute top-full left-0 w-full bg-psm-navy shadow-lg">
             <div className="flex flex-col space-y-4 p-6">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-white hover:text-accent-blue transition-colors font-normal luxury-sans text-left"
-                  data-testid={`mobile-nav-${item.id}`}
-                >
-                  {item.label}
-                </button>
-              ))}
+              {isHomePage ? (
+                homeNavItems.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className="text-white hover:text-psm-cyan transition-colors font-normal luxury-sans text-left"
+                    data-testid={`mobile-nav-${item.id}`}
+                  >
+                    {item.label}
+                  </button>
+                ))
+              ) : (
+                pageNavItems.map((item) => (
+                  <Link key={item.href} href={item.href}>
+                    <span 
+                      className={`text-white hover:text-psm-cyan transition-colors font-normal luxury-sans cursor-pointer ${
+                        location === item.href ? 'text-psm-cyan' : ''
+                      }`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </span>
+                  </Link>
+                ))
+              )}
             </div>
           </div>
         )}

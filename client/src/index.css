@@ -30,11 +30,14 @@
   --radius: 0.5rem;
   
   /* Premium blue palette for PSM Financial */
-  --navy: hsl(242, 64%, 32%);
-  --royal: hsl(207, 73%, 55%);
+  /* Primary colors: #3ce9fd (cyan) and #0a2d6d (dark navy) */
+  --navy: #0a2d6d;
+  --royal: #3ce9fd;
   --steel: hsl(210, 14%, 37%);
-  --accent-blue: hsl(207, 90%, 61%);
-  --light-blue: hsl(207, 89%, 96%);
+  --accent-blue: #3ce9fd;
+  --light-blue: hsl(187, 97%, 96%);
+  --psm-cyan: #3ce9fd;
+  --psm-navy: #0a2d6d;
 }
 
 .dark {
@@ -262,11 +265,11 @@
 
 @layer utilities {
   .text-navy {
-    color: hsl(242, 64%, 32%);
+    color: #0a2d6d;
   }
   
   .text-royal {
-    color: hsl(207, 73%, 55%);
+    color: #3ce9fd;
   }
   
   .text-steel {
@@ -274,15 +277,23 @@
   }
   
   .text-accent-blue {
-    color: hsl(207, 90%, 61%);
+    color: #3ce9fd;
+  }
+
+  .text-psm-cyan {
+    color: #3ce9fd;
+  }
+
+  .text-psm-navy {
+    color: #0a2d6d;
   }
   
   .bg-navy {
-    background-color: hsl(242, 64%, 32%);
+    background-color: #0a2d6d;
   }
   
   .bg-royal {
-    background-color: hsl(207, 73%, 55%);
+    background-color: #3ce9fd;
   }
   
   .bg-steel {
@@ -290,23 +301,39 @@
   }
   
   .bg-accent-blue {
-    background-color: hsl(207, 90%, 61%);
+    background-color: #3ce9fd;
   }
   
   .bg-light-blue {
-    background-color: hsl(207, 89%, 96%);
+    background-color: hsl(187, 97%, 96%);
+  }
+
+  .bg-psm-cyan {
+    background-color: #3ce9fd;
+  }
+
+  .bg-psm-navy {
+    background-color: #0a2d6d;
   }
   
   .border-navy {
-    border-color: hsl(242, 64%, 32%);
+    border-color: #0a2d6d;
   }
   
   .border-royal {
-    border-color: hsl(207, 73%, 55%);
+    border-color: #3ce9fd;
   }
   
   .border-accent-blue {
-    border-color: hsl(207, 90%, 61%);
+    border-color: #3ce9fd;
+  }
+
+  .border-psm-cyan {
+    border-color: #3ce9fd;
+  }
+
+  .border-psm-navy {
+    border-color: #0a2d6d;
   }
 
   .glass-effect {
