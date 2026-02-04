@@ -1,0 +1,825 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSM Financial Broker - Premium Financial Services in UAE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: {
+                        50: '#f0f9ff',
+                        500: '#0A1428',
+                        600: '#0c1529',
+                        900: '#111827'
+                    },
+                    accent: {
+                        gold: '#D4AF37',
+                        bronze: '#CD7F32'
+                    }
+                },
+                fontFamily: {
+                    sans: ['Inter', 'system-ui', 'sans-serif']
+                },
+                animation: {
+                    'float': 'float 6s ease-in-out infinite',
+                    'glow': 'glow 2s ease-in-out infinite alternate',
+                }
+            }
+        }
+    };
+    </script>
+    
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 20px #D4AF37; }
+            to { box-shadow: 0 0 30px #D4AF37; }
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0A1428 0%, #111827 50%, #1e293b 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #CD7F32 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- @COMPONENT: Navigation [responsive header with mobile menu] -->
+    <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-primary-500">
+                        PSM <span class="text-accent-gold">FINANCIAL</span>
+                    </div>
+                    <div class="hidden md:block ml-2 text-sm text-gray-600">BROKER</div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-accent-gold transition-colors">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-accent-gold transition-colors">About</a>
+                    <a href="#services" class="text-gray-700 hover:text-accent-gold transition-colors">Services</a>
+                    <a href="#portfolio" class="text-gray-700 hover:text-accent-gold transition-colors">Portfolio</a>
+                    <a href="#contact" class="text-gray-700 hover:text-accent-gold transition-colors">Contact</a>
+                    <button class="bg-accent-gold text-white px-6 py-2 rounded-lg hover:bg-accent-bronze transition-colors">
+                        Get Started
+                    </button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <button class="lg:hidden text-gray-700" data-event="click:toggleMobileMenu">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="lg:hidden bg-white border-t border-gray-100 hidden" id="mobile-menu">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#home" class="block text-gray-700 hover:text-accent-gold">Home</a>
+                <a href="#about" class="block text-gray-700 hover:text-accent-gold">About</a>
+                <a href="#services" class="block text-gray-700 hover:text-accent-gold">Services</a>
+                <a href="#portfolio" class="block text-gray-700 hover:text-accent-gold">Portfolio</a>
+                <a href="#contact" class="block text-gray-700 hover:text-accent-gold">Contact</a>
+                <button class="w-full bg-accent-gold text-white px-6 py-2 rounded-lg hover:bg-accent-bronze transition-colors">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- @COMPONENT: Hero Section [immersive full-width hero with 3D background] -->
+    <section id="home" class="relative h-screen hero-gradient overflow-hidden">
+        <!-- Three.js 3D Background Container -->
+        <div id="threejs-container" class="absolute inset-0 z-10"></div>
+        
+        <div class="relative z-20 flex items-center justify-center h-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="animate-float">
+                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">
+                        Premium <span class="text-gradient">Financial</span><br/>
+                        Brokerage Services
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                        Elevating your investment journey in the UAE with expert guidance, 
+                        sophisticated strategies, and unparalleled market insights.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button class="bg-accent-gold text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-accent-bronze transition-all hover:scale-105">
+                            <i class="fas fa-chart-line mr-2"></i>
+                            Explore Investment Options
+                        </button>
+                        <button class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-primary-500 transition-all">
+                            <i class="fas fa-phone mr-2"></i>
+                            Schedule Consultation
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Floating Stats -->
+                <div class="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-full max-w-4xl">
+                    <div class="grid grid-cols-3 gap-8 text-center">
+                        <div class="text-white">
+                            <div class="text-3xl font-bold text-accent-gold" data-bind="stats.aum">AED 2.5B+</div>
+                            <div class="text-sm">Assets Under Management</div>
+                        </div>
+                        <div class="text-white">
+                            <div class="text-3xl font-bold text-accent-gold" data-bind="stats.clients">1000+</div>
+                            <div class="text-sm">Satisfied Clients</div>
+                        </div>
+                        <div class="text-white">
+                            <div class="text-3xl font-bold text-accent-gold" data-bind="stats.experience">15+</div>
+                            <div class="text-sm">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+            <div class="animate-bounce">
+                <i class="fas fa-chevron-down text-white text-2xl"></i>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Hero Section -->
+
+    <!-- @COMPONENT: About Section [company introduction with UAE market expertise] -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary-500 mb-6">
+                        UAE Market <span class="text-gradient">Expertise</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        PSM Financial Broker stands as a beacon of excellence in the UAE's dynamic financial landscape. 
+                        With deep-rooted understanding of local markets and global financial trends, we deliver 
+                        sophisticated investment solutions tailored for the discerning UAE investor.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Our commitment to excellence and client-centric approach has established us as a trusted 
+                        partner for high-net-worth individuals, corporations, and institutional investors across 
+                        the Emirates.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="text-center p-4 bg-gray-50 rounded-lg">
+                            <div class="text-2xl font-bold text-accent-gold mb-2">RERA</div>
+                            <div class="text-sm text-gray-600">Licensed</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-50 rounded-lg">
+                            <div class="text-2xl font-bold text-accent-gold mb-2">SCA</div>
+                            <div class="text-sm text-gray-600">Regulated</div>
+                        </div>
+                    </div>
+                    
+                    <button class="bg-primary-500 text-white px-6 py-3 rounded-lg hover:bg-primary-600 transition-colors">
+                        Learn More About Us
+                    </button>
+                </div>
+                
+                <div class="relative">
+                    <!-- Modern Dubai skyline with financial district -->
+                    <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                         alt="Dubai Financial District skyline" 
+                         class="rounded-2xl shadow-2xl w-full h-auto" />
+                    
+                    <!-- Floating Elements -->
+                    <div class="absolute -top-6 -right-6 bg-accent-gold text-white p-6 rounded-2xl shadow-xl animate-float">
+                        <i class="fas fa-award text-3xl mb-2"></i>
+                        <div class="text-sm font-semibold">Award Winning</div>
+                    </div>
+                    
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl animate-float" style="animation-delay: -2s;">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-shield-alt text-accent-gold text-2xl"></i>
+                            <div>
+                                <div class="font-semibold text-primary-500">Fully Insured</div>
+                                <div class="text-sm text-gray-600">Up to AED 50M</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: About Section -->
+
+    <!-- @COMPONENT: Services Section [comprehensive financial services showcase] -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-primary-500 mb-4">
+                    Comprehensive <span class="text-gradient">Financial Services</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    From wealth management to real estate investment, we provide end-to-end financial solutions 
+                    designed to maximize your returns in the UAE market.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- @MAP: services.map(service => ( -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-accent-gold/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-accent-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-500 mb-4">Investment Advisory</h3>
+                    <p class="text-gray-600 mb-6">
+                        Strategic investment planning tailored to UAE market dynamics and your risk profile.
+                    </p>
+                    <a href="#" class="text-accent-gold font-semibold hover:text-accent-bronze transition-colors">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-accent-gold/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-building text-accent-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-500 mb-4">Real Estate Investment</h3>
+                    <p class="text-gray-600 mb-6">
+                        Premium property investment opportunities across Dubai, Abu Dhabi, and emerging markets.
+                    </p>
+                    <a href="#" class="text-accent-gold font-semibold hover:text-accent-bronze transition-colors">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-accent-gold/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-coins text-accent-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-500 mb-4">Wealth Management</h3>
+                    <p class="text-gray-600 mb-6">
+                        Holistic wealth preservation and growth strategies for high-net-worth individuals.
+                    </p>
+                    <a href="#" class="text-accent-gold font-semibold hover:text-accent-bronze transition-colors">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-accent-gold/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-university text-accent-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-500 mb-4">Corporate Finance</h3>
+                    <p class="text-gray-600 mb-6">
+                        Business financing, M&A advisory, and corporate restructuring services.
+                    </p>
+                    <a href="#" class="text-accent-gold font-semibold hover:text-accent-bronze transition-colors">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-accent-gold/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-globe text-accent-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-500 mb-4">International Markets</h3>
+                    <p class="text-gray-600 mb-6">
+                        Global investment opportunities and cross-border financial structuring.
+                    </p>
+                    <a href="#" class="text-accent-gold font-semibold hover:text-accent-bronze transition-colors">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-accent-gold/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-accent-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-500 mb-4">Risk Management</h3>
+                    <p class="text-gray-600 mb-6">
+                        Comprehensive risk assessment and mitigation strategies for your portfolio.
+                    </p>
+                    <a href="#" class="text-accent-gold font-semibold hover:text-accent-bronze transition-colors">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Services Section -->
+
+    <!-- @COMPONENT: Why Choose Us Section [competitive advantages and USPs] -->
+    <section class="py-20 bg-primary-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Why Choose <span class="text-accent-gold">PSM Financial</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Experience the difference that comes with working with UAE's most trusted financial advisory firm.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-24 h-24 bg-accent-gold rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-user-tie text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Expert Team</h3>
+                    <p class="text-gray-300">
+                        Certified professionals with decades of combined experience in UAE financial markets.
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-24 h-24 bg-accent-gold rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-handshake text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Personalized Service</h3>
+                    <p class="text-gray-300">
+                        Tailored financial solutions that align with your unique goals and risk tolerance.
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-24 h-24 bg-accent-gold rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-trophy text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Proven Results</h3>
+                    <p class="text-gray-300">
+                        Consistent outperformance and successful track record across market cycles.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Performance Metrics -->
+            <div class="mt-16 bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+                <div class="grid md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="text-3xl font-bold text-accent-gold mb-2" data-bind="metrics.returns">23.5%</div>
+                        <div class="text-white">Average Annual Returns</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-accent-gold mb-2" data-bind="metrics.satisfaction">98%</div>
+                        <div class="text-white">Client Satisfaction</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-accent-gold mb-2" data-bind="metrics.portfolios">500+</div>
+                        <div class="text-white">Active Portfolios</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-accent-gold mb-2" data-bind="metrics.countries">25+</div>
+                        <div class="text-white">Countries Served</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Why Choose Us Section -->
+
+    <!-- @COMPONENT: Portfolio Section [featured investment projects and success stories] -->
+    <section id="portfolio" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-primary-500 mb-4">
+                    Featured <span class="text-gradient">Investment Portfolio</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Explore our successful investment projects and discover opportunities that have delivered 
+                    exceptional returns for our clients.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                <!-- Featured Project 1 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden hover:shadow-xl transition-all">
+                    <!-- Luxury UAE real estate development -->
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
+                         alt="Luxury residential complex in Dubai Marina" 
+                         class="w-full h-64 object-cover" />
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-primary-500">Marina Elite Residences</h3>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
+                                +34% ROI
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Premium waterfront development in Dubai Marina featuring luxury apartments 
+                            with world-class amenities and stunning marina views.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm text-gray-500">
+                                <i class="fas fa-map-marker-alt mr-2"></i>Dubai Marina
+                            </div>
+                            <button class="text-accent-gold font-semibold hover:text-accent-bronze transition-colors">
+                                View Details <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Project 2 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden hover:shadow-xl transition-all">
+                    <!-- Modern UAE office building -->
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
+                         alt="Modern commercial office tower in DIFC" 
+                         class="w-full h-64 object-cover" />
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-primary-500">DIFC Business Tower</h3>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
+                                +28% ROI
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Grade A commercial office space in Dubai International Financial Centre, 
+                            offering premium business facilities and strategic location advantages.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm text-gray-500">
+                                <i class="fas fa-map-marker-alt mr-2"></i>DIFC, Dubai
+                            </div>
+                            <button class="text-accent-gold font-semibold hover:text-accent-bronze transition-colors">
+                                View Details <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investment Categories -->
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="text-center p-6 bg-gray-50 rounded-xl hover:bg-accent-gold/10 transition-all">
+                    <div class="w-16 h-16 bg-accent-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-building text-white text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-primary-500 mb-2">Real Estate</h4>
+                    <p class="text-sm text-gray-600">Premium properties across UAE</p>
+                </div>
+
+                <div class="text-center p-6 bg-gray-50 rounded-xl hover:bg-accent-gold/10 transition-all">
+                    <div class="w-16 h-16 bg-accent-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-area text-white text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-primary-500 mb-2">Equity Markets</h4>
+                    <p class="text-sm text-gray-600">Diversified stock portfolios</p>
+                </div>
+
+                <div class="text-center p-6 bg-gray-50 rounded-xl hover:bg-accent-gold/10 transition-all">
+                    <div class="w-16 h-16 bg-accent-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-gem text-white text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-primary-500 mb-2">Alternative Assets</h4>
+                    <p class="text-sm text-gray-600">Gold, commodities & more</p>
+                </div>
+
+                <div class="text-center p-6 bg-gray-50 rounded-xl hover:bg-accent-gold/10 transition-all">
+                    <div class="w-16 h-16 bg-accent-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-handshake text-white text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-primary-500 mb-2">Private Equity</h4>
+                    <p class="text-sm text-gray-600">Exclusive investment opportunities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Portfolio Section -->
+
+    <!-- @COMPONENT: Contact Section [elegant contact form and office information] -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-primary-500 mb-4">
+                    Start Your <span class="text-gradient">Investment Journey</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Connect with our expert advisors to discuss your financial goals and discover 
+                    personalized investment opportunities in the UAE market.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold text-primary-500 mb-6">Schedule a Consultation</h3>
+                    <form class="space-y-6" data-implementation="Should validate form and handle submission">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-gold focus:border-transparent" placeholder="John" data-mock="true">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-gold focus:border-transparent" placeholder="Doe" data-mock="true">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-gold focus:border-transparent" placeholder="john.doe@email.com" data-mock="true">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-gold focus:border-transparent" placeholder="+971 50 123 4567" data-mock="true">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Investment Interest</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-gold focus:border-transparent" data-mock="true">
+                                <option>Real Estate Investment</option>
+                                <option>Wealth Management</option>
+                                <option>Investment Advisory</option>
+                                <option>Corporate Finance</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-gold focus:border-transparent" placeholder="Tell us about your investment goals..." data-mock="true"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-accent-gold text-white py-4 rounded-lg font-semibold hover:bg-accent-bronze transition-colors">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <!-- Office Information -->
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-primary-500 mb-6">Visit Our Office</h3>
+                        
+                        <!-- Professional modern office interior in UAE -->
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300" 
+                             alt="Modern office interior with professional meeting space" 
+                             class="w-full h-48 object-cover rounded-lg mb-6" />
+
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <i class="fas fa-map-marker-alt text-accent-gold text-xl mt-1"></i>
+                                <div>
+                                    <div class="font-semibold text-primary-500">Dubai Office</div>
+                                    <div class="text-gray-600">Level 15, Emirates Financial Towers<br/>DIFC, Dubai, UAE</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-phone text-accent-gold text-xl"></i>
+                                <div>
+                                    <div class="font-semibold text-primary-500">Phone</div>
+                                    <div class="text-gray-600">+971 4 123 4567</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-envelope text-accent-gold text-xl"></i>
+                                <div>
+                                    <div class="font-semibold text-primary-500">Email</div>
+                                    <div class="text-gray-600">info@psmfinancial.ae</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-clock text-accent-gold text-xl"></i>
+                                <div>
+                                    <div class="font-semibold text-primary-500">Business Hours</div>
+                                    <div class="text-gray-600">Sun - Thu: 9:00 AM - 6:00 PM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Contact -->
+                    <div class="bg-primary-500 rounded-2xl p-8 text-white">
+                        <h3 class="text-2xl font-bold mb-4">Need Immediate Assistance?</h3>
+                        <p class="mb-6 text-gray-300">
+                            Our investment specialists are available 24/7 to address your urgent financial needs.
+                        </p>
+                        <div class="space-y-3">
+                            <button class="w-full bg-accent-gold text-white py-3 rounded-lg font-semibold hover:bg-accent-bronze transition-colors">
+                                <i class="fas fa-phone mr-2"></i>
+                                Call Now: +971 50 PSM GOLD
+                            </button>
+                            <button class="w-full border border-white text-white py-3 rounded-lg font-semibold hover:bg-white hover:text-primary-500 transition-colors">
+                                <i class="fab fa-whatsapp mr-2"></i>
+                                WhatsApp Chat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Contact Section -->
+
+    <!-- @COMPONENT: Footer [comprehensive footer with links and social media] -->
+    <footer class="bg-primary-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div class="lg:col-span-2">
+                    <div class="text-3xl font-bold mb-4">
+                        PSM <span class="text-accent-gold">FINANCIAL</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Leading financial brokerage firm in the UAE, providing sophisticated investment solutions 
+                        and wealth management services to discerning clients across the Emirates.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-accent-gold rounded-full flex items-center justify-center hover:bg-accent-bronze transition-colors">
+                            <i class="fab fa-linkedin text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-accent-gold rounded-full flex items-center justify-center hover:bg-accent-bronze transition-colors">
+                            <i class="fab fa-twitter text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-accent-gold rounded-full flex items-center justify-center hover:bg-accent-bronze transition-colors">
+                            <i class="fab fa-instagram text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-accent-gold rounded-full flex items-center justify-center hover:bg-accent-bronze transition-colors">
+                            <i class="fab fa-youtube text-white"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#about" class="text-gray-300 hover:text-accent-gold transition-colors">About Us</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-accent-gold transition-colors">Our Services</a></li>
+                        <li><a href="#portfolio" class="text-gray-300 hover:text-accent-gold transition-colors">Investment Portfolio</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-accent-gold transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent-gold transition-colors">Client Portal</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-accent-gold transition-colors">Investment Advisory</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent-gold transition-colors">Wealth Management</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent-gold transition-colors">Real Estate Investment</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent-gold transition-colors">Corporate Finance</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent-gold transition-colors">Risk Management</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Regulatory Information -->
+            <div class="border-t border-gray-700 pt-8 mb-8">
+                <div class="grid md:grid-cols-3 gap-6 text-center">
+                    <div>
+                        <div class="text-accent-gold font-semibold mb-2">RERA Licensed</div>
+                        <div class="text-sm text-gray-400">Real Estate Regulatory Agency</div>
+                    </div>
+                    <div>
+                        <div class="text-accent-gold font-semibold mb-2">SCA Regulated</div>
+                        <div class="text-sm text-gray-400">Securities & Commodities Authority</div>
+                    </div>
+                    <div>
+                        <div class="text-accent-gold font-semibold mb-2">DFSA Approved</div>
+                        <div class="text-sm text-gray-400">Dubai Financial Services Authority</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="text-gray-400 text-sm">
+                    © 2024 PSM Financial Broker. All rights reserved.
+                </div>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-accent-gold text-sm transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-accent-gold text-sm transition-colors">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-accent-gold text-sm transition-colors">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <!-- Three.js 3D Background Script -->
+    <script>
+    // @FUNCTIONALITY: This creates a 3D animated background using Three.js with floating geometric shapes
+    (function() {
+        // Initialize Three.js scene
+        const container = document.getElementById('threejs-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000000, 0);
+        container.appendChild(renderer.domElement);
+
+        // Create floating geometric shapes
+        const shapes = [];
+        const geometries = [
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.SphereGeometry(0.7, 32, 32),
+            new THREE.ConeGeometry(0.7, 1.5, 8),
+            new THREE.OctahedronGeometry(0.8)
+        ];
+
+        // Create materials with gold accents
+        const materials = [
+            new THREE.MeshBasicMaterial({ color: 0xD4AF37, wireframe: true, transparent: true, opacity: 0.3 }),
+            new THREE.MeshBasicMaterial({ color: 0xCD7F32, wireframe: true, transparent: true, opacity: 0.2 }),
+            new THREE.MeshBasicMaterial({ color: 0xFFFFFF, wireframe: true, transparent: true, opacity: 0.1 })
+        ];
+
+        // Add shapes to scene
+        for (let i = 0; i < 20; i++) {
+            const geometry = geometries[Math.floor(Math.random() * geometries.length)];
+            const material = materials[Math.floor(Math.random() * materials.length)];
+            const shape = new THREE.Mesh(geometry, material);
+            
+            shape.position.x = (Math.random() - 0.5) * 50;
+            shape.position.y = (Math.random() - 0.5) * 30;
+            shape.position.z = (Math.random() - 0.5) * 30;
+            
+            shape.rotation.x = Math.random() * Math.PI;
+            shape.rotation.y = Math.random() * Math.PI;
+            
+            scene.add(shape);
+            shapes.push(shape);
+        }
+
+        camera.position.z = 15;
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Rotate and move shapes
+            shapes.forEach((shape, index) => {
+                shape.rotation.x += 0.005;
+                shape.rotation.y += 0.007;
+                shape.position.y += Math.sin(Date.now() * 0.001 + index) * 0.02;
+            });
+            
+            renderer.render(scene, camera);
+        }
+
+        // Handle window resize
+        function handleResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        window.addEventListener('resize', handleResize);
+        animate();
+    })();
+
+    // Smooth scrolling for navigation links
+    (function() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    })();
+
+    // Mobile menu toggle
+    (function() {
+        const mobileMenuButton = document.querySelector('[data-event="click:toggleMobileMenu"]');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    })();
+
+    // TODO: Implement business logic, API calls, and state management for form submissions and data fetching
+    </script>
+</body>
+</html>
